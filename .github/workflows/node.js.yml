@@ -1,0 +1,32 @@
+# This workflow will do a clean install of node dependencies, build the source code and run tests across different versions of node
+# For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
+
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    # runs-on은 잡을 실행할 운영체제로 Windows, Linux, macOS를 지정할 수 있고 노드를 직접 운영하는 경우에는 self-hosted를 지정할 수도 있다.
+    runs-on: self-hosted
+
+    # strategy는 위 설정처럼 같은 잡을 여러 버전의 환경에서 실행하고 싶을 때 행렬을 구성한다.
+    strategy:
+      matrix:
+        node-version: [10.x, 12.x, 14.x]
+    # jobs.<job_id>.steps가 잡의 실제 동작을 정의하는 부분이다.
+    steps:  
+    #  Checkout 액션과 Setup Node.js environment 액션 사용한 것이다.
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    #jobs.<job_id>.steps.run은 시스템의 shell에 명령어를 실행하는 부분이다.
+    - run: npm ci
+    - run: npm run build --if-present
+    - run: npm test
