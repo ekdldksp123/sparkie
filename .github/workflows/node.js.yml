@@ -2,14 +2,14 @@
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-nodejs-with-github-actions
 
 name: Node.js CI
-
+# Event에 대해 작성하는 부분. 단일 Event로 사용할 수도 있고 array []로 작성할수도 있음.
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
-jobs:
+jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에서 실행됨. 다른 Job에 의존 관계를 가질 수 있고, 독립적으로 병렬 실행도 가능함
   build:
     # runs-on은 잡을 실행할 운영체제로 Windows, Linux, macOS를 지정할 수 있고 노드를 직접 운영하는 경우에는 self-hosted를 지정할 수도 있다.
     runs-on: self-hosted
