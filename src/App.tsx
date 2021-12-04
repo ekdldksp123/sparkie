@@ -1,8 +1,9 @@
-import React from "react";
-import { QueryClient, QueryClientProvider } from "react-query";
-import "./App.css";
-import ReactQueryExample from "./components/ReactQueryExample";
-import EmotionJsExample from "./components/EmotionJsExample";
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import './App.css';
+import ReactQueryExample from './components/ReactQueryExample';
+import EmotionJsExample from './components/EmotionJsExample';
+import DataWithExpress from './components/DataWithExpress';
 
 type Props = {};
 
@@ -14,6 +15,8 @@ const App: React.FC<Props> = () => {
       <ReactQueryExample />
       <hr />
       <EmotionJsExample />
+      <hr />
+      <DataWithExpress />
     </QueryClientProvider>
   );
 };

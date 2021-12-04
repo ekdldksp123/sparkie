@@ -1,4 +1,4 @@
-# 픽미픽미픽미업
+# pick_me client
 
 - TypeScript
 - React
