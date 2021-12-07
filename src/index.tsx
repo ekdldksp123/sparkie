@@ -2,13 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Navigation from './components/Navigation';
+import Navigation from './components/molecules/Navigation';
+import { BrowserRouter } from 'react-router-dom';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Navigation>
+    <BrowserRouter>
       <App />
-    </Navigation>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root'),
 );

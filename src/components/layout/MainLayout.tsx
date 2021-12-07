@@ -1,12 +1,12 @@
 import React from 'react';
 import EmotionJsExample from '../molecules/EmotionJsExample';
-import Navigation from '../Navigation';
+import Navigation from '../molecules/Navigation';
 
-const MainLayout: React.FC = () => {
+const MainLayout: React.FC = ({ children }) => {
   return (
     <>
       <Navigation />
-      <EmotionJsExample />
+      {children}
     </>
   );
 };
