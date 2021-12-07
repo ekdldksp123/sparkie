@@ -1,11 +1,12 @@
 import React from 'react';
-import EmotionJsExample from '../molecules/EmotionJsExample';
 import Navigation from '../molecules/Navigation';
+import { useLocation } from 'react-router-dom';
 
 const MainLayout: React.FC = ({ children }) => {
+  const location = useLocation();
   return (
     <>
-      <Navigation />
+      {location.pathname !== '/' && <Navigation />}
       {children}
     </>
   );
