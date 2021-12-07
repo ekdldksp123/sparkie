@@ -2,13 +2,13 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Router from './components/Router';
+import Navigation from './components/Navigation';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <Navigation>
       <App />
-    </Router>
+    </Navigation>
   </React.StrictMode>,
   document.getElementById('root'),
 );
