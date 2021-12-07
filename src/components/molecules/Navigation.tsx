@@ -37,9 +37,6 @@ const Navigation: React.FC = ({ children }) => {
             <Link to="/main">Main</Link>
           </li>
           <li>
-            <Link to="/menu">Menu</Link>
-          </li>
-          <li>
             <Link to="/sparkie">Sparkie</Link>
           </li>
           <li>
