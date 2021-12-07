@@ -22,6 +22,9 @@ const navigation = css`
     color: black;
     text-decoration: none;
     text-align: center;
+    &:hover {
+      color: red;
+    }
   }
 `;
 
