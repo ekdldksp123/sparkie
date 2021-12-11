@@ -43,7 +43,10 @@ const Navigation: React.FC = ({ children }) => {
             <Link to="/sparkie">Sparkie</Link>
           </li>
           <li>
-            <Link to="/board">Board</Link>
+            <Link to="/community">Community</Link>
+          </li>
+          <li>
+            <Link to="/qna">QnA</Link>
           </li>
           <li>
             <Link to="/about">Who we are</Link>
