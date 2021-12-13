@@ -1,32 +1,12 @@
-import React, { useState } from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import { LatLngExpression } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
+import React, { useEffect, useState } from 'react';
+import LoadKakaoMap from '../../lib/LoadKakaoMap';
 
 const Sparkie: React.FC = () => {
-  const [position, setPosition] = useState<LatLngExpression>({
-    lat: 51.505,
-    lng: -0.09,
-  });
+  useEffect(() => LoadKakaoMap(), []);
 
   return (
     <section>
-      <MapContainer
-        style={{ height: '450px' }}
-        center={[51.505, -0.09]}
-        zoom={13}
-        scrollWheelZoom={false}
-      >
-        <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-        />
-        <Marker position={[51.505, -0.09]}>
-          <Popup>
-            A pretty CSS3 popup. <br /> Easily customizable.
-          </Popup>
-        </Marker>
-      </MapContainer>
+      <div id="myMap" style={{ width: '100%', height: '50vh' }} />
     </section>
   );
 };
