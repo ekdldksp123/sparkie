@@ -4,7 +4,6 @@ import { BrowserRouter, Route, Link } from 'react-router-dom';
 import { css } from '@emotion/react';
 
 const navigation = css`
-  margin-bottom: 7vh;
   padding: 0 0;
   width: 100%;
   height: 100%;
