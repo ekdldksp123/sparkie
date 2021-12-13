@@ -1,11 +1,15 @@
 // @ts-ignore
 const { kakao } = window;
 
-export default function LoadKakaoMap() {
-  const container = document.getElementById('myMap');
+export default function LoadKakaoMap({
+  level,
+  latitude,
+  longitude,
+}: MapLocation) {
+  const container = document.getElementById('kakaoMap');
   const options = {
-    center: new kakao.maps.LatLng(33.450701, 126.570667),
-    level: 3,
+    level, // 시작 zoom
+    center: new kakao.maps.LatLng(latitude, longitude),
   };
-  const map = new kakao.maps.Map(container, options);
+  new kakao.maps.Map(container, options);
 }

@@ -4,5 +4,5 @@
 type MapLocation = {
   latitude: number;
   longitude: number;
-  zoom: number;
+  level: number;
 };
