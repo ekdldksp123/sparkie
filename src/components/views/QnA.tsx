@@ -1,6 +1,6 @@
 import React, { useCallback, useRef, useState } from 'react';
 import { css } from '@emotion/react';
-import writePostApi from '../../lib/api/post/writePostApi';
+import writePostApi from '../../types/api/post/writePostApi';
 
 const style = css`
   display: flex;
