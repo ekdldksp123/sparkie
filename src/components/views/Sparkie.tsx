@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import LoadKakaoMap from '../../lib/LoadKakaoMap';
+import LoadKakaoMap from '../../lib/common/LoadKakaoMap';
 import styled from '@emotion/styled';
-import requestChargeStatus from '../../lib/requestChargeStatus';
+import requestChargeStatus from '../../lib/api/charger/requestChargeStatus';
 
 // @ts-ignore
 const { kakao } = window;
