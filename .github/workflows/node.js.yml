@@ -8,6 +8,8 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
+  pull_request_target:
+    branches: [ main ]
 
 jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에서 실행됨. 다른 Job에 의존 관계를 가질 수 있고, 독립적으로 병렬 실행도 가능함
   build:
@@ -17,7 +19,8 @@ jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에�
     # strategy는 위 설정처럼 같은 잡을 여러 버전의 환경에서 실행하고 싶을 때 행렬을 구성한다.
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        # node-version: [10.x, 12.x, 14.x]
+        node-version: [12.x]
     # jobs.<job_id>.steps가 잡의 실제 동작을 정의하는 부분이다.
     steps:  
     #  Checkout 액션과 Setup Node.js environment 액션 사용한 것이다.
