@@ -22,8 +22,16 @@ const Sparkie: React.FC = () => {
 
   // Data Load
   const res = useCallback(async () => {
-    const status = await requestChargeStatus();
-    console.log(status.data);
+    const params = {
+      // latitude: 37.566316,
+      // longitude: 126.977048,
+      // rdnmadr: '인천광역시 남동구 소래로 633',
+      pageNo: 1,
+      numOfRows: 20,
+      zcode: '11',
+    };
+    const status = await requestChargeStatus(params);
+    console.log(status);
   }, []);
 
   return (
