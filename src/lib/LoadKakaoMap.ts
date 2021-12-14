@@ -11,5 +11,5 @@ export default function LoadKakaoMap({
     level, // 시작 zoom
     center: new kakao.maps.LatLng(latitude, longitude),
   };
-  new kakao.maps.Map(container, options);
+  return new kakao.maps.Map(container, options);
 }
