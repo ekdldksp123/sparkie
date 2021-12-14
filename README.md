@@ -1,5 +1,17 @@
 # pick_me client
+![image](https://user-images.githubusercontent.com/58977834/146023520-762d61ff-fb87-4715-8597-93f31110e05e.png)
+### src > components
+리액트 컴포넌트가 위치함
+- components > Layout: 화면 구성 컴포넌트를 위한 디렉토리
+- components > atom: 가장 작은 단위의 재사용 가능한 컴포넌트 (button, div, ...)
+- components > molecules: atom 들을 모아둔, 조금 더 상위 레벨의 재사용 가능한 컴포넌트.
+- components > views: 완성된 화면
+### lib
+라이브러리가 위치
+### types
+타입스크립트 타입 참조가 위치
 
+---
 - TypeScript
 - React
 - React Query
@@ -12,6 +24,8 @@
 - 기본 프로젝트 세팅
 - React Query, Emotion.js 초기 예제 세팅
 - Github Actions 세팅
+
+
 
 ## 태양
 ---
