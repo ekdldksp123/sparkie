@@ -14,7 +14,6 @@ on:
 jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에서 실행됨. 다른 Job에 의존 관계를 가질 수 있고, 독립적으로 병렬 실행도 가능함
   build:
     # runs-on은 잡을 실행할 운영체제로 Windows, Linux, macOS를 지정할 수 있고 노드를 직접 운영하는 경우에는 self-hosted를 지정할 수도 있다.
-    # runs-on: self-hosted
     runs-on: ubuntu-18.04
 
     # strategy는 위 설정처럼 같은 잡을 여러 버전의 환경에서 실행하고 싶을 때 행렬을 구성한다.
