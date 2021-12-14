@@ -11,7 +11,7 @@ export default async function requestChargeStatus(params: SearchParams) {
         // serviceKey: process.env.REACT_APP_DATA_SERVICE_KEY,
         // serviceKey: process.env.REACT_APP_DATA_EVCHARGER_KEY,
         serviceKey:
-          'u/nd5t9/1uTDtkilbsSSuXXoFhzoq/gI2kaFBrGCJQrMUbxXmmP/YB8UoySSjGjVVcRaCLtlUCHsQxhIByBCzg==',
+          process.env.REACT_APP_DATA_EVCHARGER_KEY,
       },
     },
   );
