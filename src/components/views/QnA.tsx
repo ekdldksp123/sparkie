@@ -31,7 +31,7 @@ const QnA = () => {
       .catch((e) => {
         console.warn(e);
       });
-  }, []);
+  }, [post]);
 
   return (
     <section css={style}>
