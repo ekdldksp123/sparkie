@@ -30,4 +30,6 @@ jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에�
     #jobs.<job_id>.steps.run은 시스템의 shell에 명령어를 실행하는 부분이다.
     - run: npm ci
     - run: npm run build --if-present
+      env:
+        CI: ''
     - run: npm test
