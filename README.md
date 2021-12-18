@@ -1,5 +1,17 @@
 # pick_me client
+![image](https://user-images.githubusercontent.com/58977834/146023520-762d61ff-fb87-4715-8597-93f31110e05e.png)
+### src > components
+리액트 컴포넌트가 위치함
+- components > Layout: 화면 구성 컴포넌트를 위한 디렉토리
+- components > atom: 가장 작은 단위의 재사용 가능한 컴포넌트 (button, div, ...)
+- components > molecules: atom 들을 모아둔, 조금 더 상위 레벨의 재사용 가능한 컴포넌트.
+- components > views: 완성된 화면
+### lib
+라이브러리가 위치
+### types
+타입스크립트 타입 참조가 위치
 
+---
 - TypeScript
 - React
 - React Query
@@ -12,3 +24,32 @@
 - 기본 프로젝트 세팅
 - React Query, Emotion.js 초기 예제 세팅
 - Github Actions 세팅
+
+---
+### 2021. 12. 18 (토)
+- 공통으로 사용할 메뉴바 컴포넌트 src/components/molecules에 추가(MenuBar.tsx, MenuBar.css)
+- App.css 수정
+
+## 태양
+---
+### [지도 관련]
+
+1. 지도 시점 이동 이벤트 감지하면 계산하여 새 마커 생성
+    - 문제: 공공api의 request param이 너무 제한적.. (행정구역분류코드 앞 두 자리만 받고 있음.. ex) 11: 서울 전체)
+    - 고민을 좀 더 해 보자.
+2. 지도는 구 이름만 나눠서 표시하고 구마다 전기차 충전소 개수를 표시
+    - 아니면 다른 지도를 가져와서 쓰다가 상세지도를 표시할 때, 카카오 맵을 써야할지도...
+    - zoom level을 낮추면 되려나? 이건 지도 document를 공부해야겠음.
+    - 갯수 표시는 어려울 거 같진 않은데, 상기한 api 의 제한적 문제로 인해 함수를 직접 구현해야 함.
+3. 마우스가 지도 안에 들어와서 특정 지역 안에 들어오면 색깔이 바뀌게 한다
+    - 카카오 지도 object의 className과 id 등이 구조적으로 정해져 있다면, custom stylesheet로 가능하긴 할 듯 하나 모르겠당
+    - 고거만 되면 호버로 기냥.
+    - 근데 지도가 그냥 png 파일일텐데?
+4. 마커는 색깔별로 그 갯수의 크기를 표시하고, 헤드에 정확한 숫자를 표시. 핀포인트를 클릭하면 세부 지도로 이동?
+    - 가능할 것 같긴 함.
+5. 우선 지도는 서울만 세팅해놓고 해본다음에 추후 논의
+    - 그럽시당.
+---
+### [큐엔에이 관련]
+
+추후 함께 정리.
