@@ -27,7 +27,7 @@
 
 ---
 ### 2021. 12. 18 (토)
-- 공통으로 사용할 메뉴바 컴포넌트 src/components/molecules에 추가(MenuBar.tsx, MeunBar.css)
+- 공통으로 사용할 메뉴바 컴포넌트 src/components/molecules에 추가(MenuBar.tsx, MenuBar.css)
 - App.css 수정
 
 ## 태양
