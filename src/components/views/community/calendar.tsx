@@ -1,8 +1,10 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
+import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { weekdays, months, holidays } from "./calendar_base";
-import {Props} from './DateProps';
+import { Props } from './DateProps';
+import { NextBtn } from "./calendar_btn";
 
 const Calendar: React.FC<Props> = (props:Props) => {
 
@@ -11,7 +13,7 @@ const Calendar: React.FC<Props> = (props:Props) => {
     const [dateSet, setDateSet] = useState<number[][]>([]);
 
     useEffect(() => {
-        console.log(`year: ${props.year} month: ${props.month}}`)
+        console.log(`year: ${props.year} month: ${props.month}`)
         setYear(props.year);
         setMonth(props.month);
         init(year, month);
@@ -41,8 +43,6 @@ const Calendar: React.FC<Props> = (props:Props) => {
                 days.push(i);
                 rows.push(days);
                 days = [];
-            } else if( j % 7 === 0) {
-                days.push(i);
             } else days.push(i);
         }
         for(let i = endDayOfWeek; i <= 6; i++) {
@@ -53,52 +53,47 @@ const Calendar: React.FC<Props> = (props:Props) => {
         setDateSet(rows);
     }
 
-    const renderDaysByIndex = (index:number, day:number, date:string) => {
-      
-    }
-
     return (
     <>
-        <div css={wrapper}>
-            <div css={container}>
+        <Wrapper>
+            <Container>
                 <div css={caption}>
+                    {/* <NextBtn/> */}
                     <b>{year + '  ' + months[month]}</b>
                 </div>
-                <div css={table}>
-                    <div css={weekday}>
+                <Table>
+                    <Weekday>
                         {weekdays.map((value:string) => {
                             return(<div key={value}>{value}</div>);
                         })}
-                    </div>
+                    </Weekday>
                     {dateSet.length !== 0 &&
-                        dateSet.map((days:number[], idx:number) => {
+                        dateSet.map((days:number[], index:number) => {
                             return (
-                                <div css={row}>
-                                  
+                                <Row key={index}>
                                   {days.length !== 0 &&
                                     days.map((day:number, idx:number) => {
                                         let date:string;
                                         if(day !== 0) {
                                             date = `${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
-                                        } else date = '';
+                                        } else date = `${Math.random().toString(36).substr(2,11)}`;
                                         
                                         return(
-                                            <div key={idx} data-date={date}>
+                                            <div key={date} data-date={`${year}-${date}`}>
                                                 <span css={(idx === 0 || idx === 6 || holidays.includes(date)) ? holiday : day}>
-                                                    { day !== 0 ? day : ''}
+                                                    { day !== 0 ? day : '' }
                                                 </span>
                                             </div> 
                                         );
                                     })
                                   }
-
-                                </div>
+                                </Row>
                             );
                         })
                     }
-                </div>
-            </div>
-        </div>
+                </Table>
+            </Container>
+        </Wrapper>
     </>
     );
 }
@@ -111,7 +106,7 @@ const floating = keyframes`
     100%{background-position:0% 50%} 
 `;
 
-const wrapper = css`
+const Wrapper = styled.div`
     background-size: 800% 800%;
     -webkit-animation: ${floating} 16s ease infinite;
     -moz-animation: ${floating} 16s ease infinite; 
@@ -119,7 +114,7 @@ const wrapper = css`
     animation: ${floating} 16s ease infinite;
 `;
 
-const container = css`
+const Container = styled.div`
     padding-top: 1.5vh;
     padding-bottom: 1.5vh;
     width:100%;
@@ -136,6 +131,7 @@ const container = css`
 `;
 
 const caption = css`
+    display: flex;
     width: 50% !important;
     text-align: center;
     margin: 0 auto;
@@ -146,7 +142,7 @@ const caption = css`
     }
 `;
 
-const table = css`
+const Table = styled.div`
     background-color: #fff;
     width: 93%;
     height: 81%;
@@ -159,7 +155,7 @@ const table = css`
     font-size: 1.5em;
 `;
 
-const weekday = css`
+const Weekday = styled.div`
     width: 100%;
     box-sizing: border-box;
     display: flex;
@@ -174,7 +170,7 @@ const weekday = css`
     }
 `;
 
-const row = css`
+const Row = styled.div`
     width: 100%;
     height: 16%;
     display: flex;
