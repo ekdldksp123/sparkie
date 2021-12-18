@@ -44,8 +44,8 @@ const Burger = () => {
 const nav = css`
     background-color: #F65219;
     width: 100vw;
-    padding-top: 3vh;
-    padding-bottom: 3vh;
+    padding-top: 2.8vh;
+    padding-bottom: 2.8vh;
 `;
 
 const burger = css`
