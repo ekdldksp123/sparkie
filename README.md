@@ -10,6 +10,10 @@
 라이브러리가 위치
 ### types
 타입스크립트 타입 참조가 위치
+### imgs
+.png, .jpg, .svg 와 같은 이미지 및 아이콘 파일이 위치
+### src > components > assets
+constants.tsx 에 필요한 img 로드해서 export
 
 ---
 - TypeScript
@@ -34,8 +38,8 @@
 - 커뮤니티 페이지에 달력 추가! 현재 미완성. 계속 작업중~
     > views/community 폴더 생성해서 작업중입니닷
 - Board.tsx -> Community.tsx 로 이름 변경!
-- App.css 파일 수정
-- MenuBar css 조금 수정
+- App.css 파일 수정 & MenuBar css 조금 수정
+- 달력에는 styled component 적용
 
 ## 태양
 ---
