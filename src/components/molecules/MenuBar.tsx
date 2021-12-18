@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import './MenuBar.css';
-//
-// interface Props {
-//     isClicked: boolean;
-//
-//     onClick: () => void;
-// }
 
 const NavBar = () => {
   return (
