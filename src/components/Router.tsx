@@ -7,6 +7,7 @@ import Board from './views/Board';
 import About from './views/About';
 import Contact from './views/Contact';
 import QnA from './views/QnA';
+import QnAtest from './views/QnAtest';
 
 const Router = () => {
   return (
@@ -18,6 +19,7 @@ const Router = () => {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/qna" element={<QnA />} />
+      <Route path="/qnaTest" element={<QnAtest />} />
     </Routes>
   );
 };
