@@ -29,6 +29,13 @@
 ### 2021. 12. 18 (토)
 - 공통으로 사용할 메뉴바 컴포넌트 src/components/molecules에 추가(MenuBar.tsx, MenuBar.css)
 - App.css 수정
+---
+### 2021. 12. 19 (토)
+- 커뮤니티 페이지에 달력 추가! 현재 미완성. 계속 작업중~
+    > views/community 폴더 생성해서 작업중입니닷
+- Board.tsx -> Community.tsx 로 이름 변경!
+- App.css 파일 수정
+- MenuBar css 조금 수정
 
 ## 태양
 ---
