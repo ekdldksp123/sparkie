@@ -25,7 +25,10 @@
 - React Query, Emotion.js 초기 예제 세팅
 - Github Actions 세팅
 
-
+---
+### 2021. 12. 18 (토)
+- 공통으로 사용할 메뉴바 컴포넌트 src/components/molecules에 추가(MenuBar.tsx, MeunBar.css)
+- App.css 수정
 
 ## 태양
 ---
