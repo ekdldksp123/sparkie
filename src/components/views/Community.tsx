@@ -1,7 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
-import React from 'react';
-import Calendar from './community/calendar';
+import Calendar from './community/Calendar';
 import {Props} from './community/DateProps';
 
 const Community = () => {
@@ -29,10 +28,10 @@ const community = css`
 `;
 
 const calendar = css`
-  width: 40vw;
+  width: 35%;
   align-self: flex-end;
 `;
 
 const board = css`
-  width: 60vw;
+  width: 65%;
 `;
