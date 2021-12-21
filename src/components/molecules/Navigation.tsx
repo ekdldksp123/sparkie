@@ -1,9 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-/** @jsxImportSource @emotion/react */
-import { css } from '@emotion/react';
+import styled from '@emotion/styled';
 
-const navigation = css`
+const StyledUl = styled.ul`
   padding: 0 0;
   width: 100%;
   height: 100%;
@@ -32,7 +31,7 @@ const Navigation: React.FC = ({ children }) => {
   return (
     <>
       <nav>
-        <ul css={navigation}>
+        <StyledUl>
           <li>
             <Link to="/">Intro</Link>
           </li>
@@ -54,7 +53,7 @@ const Navigation: React.FC = ({ children }) => {
           <li>
             <Link to="/contact">Contact</Link>
           </li>
-        </ul>
+        </StyledUl>
       </nav>
     </>
   );

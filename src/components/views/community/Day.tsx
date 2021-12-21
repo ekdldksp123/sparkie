@@ -14,7 +14,7 @@ interface DayProps extends Props {
     setSelectedDate: (date:string) => void,
 };
 
-const Day: React.FC<DayProps> = ({ date, year, day, idx, selectedDate, setSelectedDate }: DayProps) => {
+const Day: React.FC<DayProps> = ({ date, year, day, idx, selectedDate, setSelectedDate }:DayProps) => {
     const [isSelected, setIsSelected] = useState<boolean>(false);
     const [isToday, setIsToday] = useState<boolean>(false);
     const dateToString:string = `${year}-${date}`;
