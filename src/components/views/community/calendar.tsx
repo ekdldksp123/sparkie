@@ -2,15 +2,18 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { weekdays, months, holidays } from "./calendar_base";
+import { weekdays, months } from "./CalendarBase";
 import { Props } from './DateProps';
-import { NextBtn } from "./calendar_btn";
+import { NextBtn, PrevBtn } from "./CalendarBtn";
+import { leftPad } from "../../../lib/common/DateUtils";
+import Day from "./Day";
 
 const Calendar: React.FC<Props> = (props:Props) => {
 
     const [month, setMonth] = useState<number>(0);
     const [year, setYear] = useState<number>(0);
     const [dateSet, setDateSet] = useState<number[][]>([]);
+    const [selectedDate, setSelectedDate] = useState<string>('');
 
     useEffect(() => {
         console.log(`year: ${props.year} month: ${props.month}`)
@@ -45,7 +48,7 @@ const Calendar: React.FC<Props> = (props:Props) => {
                 days = [];
             } else days.push(i);
         }
-        for(let i = endDayOfWeek; i <= 6; i++) {
+        for(let i = endDayOfWeek; i < 6; i++) {
             days.push(0);
         }
         rows.push(days);
@@ -58,8 +61,9 @@ const Calendar: React.FC<Props> = (props:Props) => {
         <Wrapper>
             <Container>
                 <div css={caption}>
-                    {/* <NextBtn/> */}
+                    <PrevBtn year={year} setYear={setYear} month={month} setMonth={setMonth}/>
                     <b>{year + '  ' + months[month]}</b>
+                    <NextBtn year={year} setYear={setYear} month={month} setMonth={setMonth}/>
                 </div>
                 <Table>
                     <Weekday>
@@ -73,18 +77,13 @@ const Calendar: React.FC<Props> = (props:Props) => {
                                 <Row key={index}>
                                   {days.length !== 0 &&
                                     days.map((day:number, idx:number) => {
+
                                         let date:string;
                                         if(day !== 0) {
-                                            date = `${month < 10 ? `0${month}` : month}-${day < 10 ? `0${day}` : day}`;
+                                            date = `${leftPad(month + 1)}-${leftPad(day)}`;
                                         } else date = `${Math.random().toString(36).substr(2,11)}`;
-                                        
-                                        return(
-                                            <div key={date} data-date={`${year}-${date}`}>
-                                                <span css={(idx === 0 || idx === 6 || holidays.includes(date)) ? holiday : day}>
-                                                    { day !== 0 ? day : '' }
-                                                </span>
-                                            </div> 
-                                        );
+
+                                        return <Day key={date} date={date} year={year} month={month} day={day} idx={idx} selectedDate={selectedDate} setSelectedDate={setSelectedDate}/>
                                     })
                                   }
                                 </Row>
@@ -97,6 +96,7 @@ const Calendar: React.FC<Props> = (props:Props) => {
     </>
     );
 }
+
 
 export default Calendar;
 
@@ -132,26 +132,25 @@ const Container = styled.div`
 
 const caption = css`
     display: flex;
-    width: 50% !important;
-    text-align: center;
-    margin: 0 auto;
-    padding: 10px 10px 30px 10px;
+    justify-content: space-between;
+    padding: 10px 15px 30px 15px;
     & b {
         font-size: 2.5em;
         color: white;
+        align-self: center;
     }
 `;
 
 const Table = styled.div`
     background-color: #fff;
-    width: 93%;
+    width: 90%;
     height: 81%;
-    padding: 45px 10px;
+    padding: 38px 10px;
     align-self: center;
     box-sizing: border-box;
-    color: #7C7C7C;
+    color: #444078;
     margin: 0;
-    border-radius: 5px;
+    border-radius: 8px;
     font-size: 1.5em;
 `;
 
@@ -160,7 +159,7 @@ const Weekday = styled.div`
     box-sizing: border-box;
     display: flex;
     justify-content: space-between;
-    padding-bottom: 45px;
+    padding-bottom: 30px;
     & div {
         min-width: 13%;
         max-height: 5%;
@@ -175,7 +174,7 @@ const Row = styled.div`
     height: 16%;
     display: flex;
     justify-content: space-between;
-    padding: 10px 10px 10px 10px;
+    padding: 10px 0 10px 0;
     & div {
         width: 13%;
         height: 100%;
@@ -185,15 +184,9 @@ const Row = styled.div`
         flex-direction: column;
     }
     & span {
-        margin: 3px 0 0 3px;
+        text-align: center;
         font-size: 0.8em;
     }
 `;
 
-const day = css`
-    color: #444078;
-`;
 
-const holiday = css`
-    color: #CE879F;
-`;

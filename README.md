@@ -1,20 +1,23 @@
 # pick_me client
 ![image](https://user-images.githubusercontent.com/58977834/146023520-762d61ff-fb87-4715-8597-93f31110e05e.png)
+
 ### src > components
 리액트 컴포넌트가 위치함
 - components > Layout: 화면 구성 컴포넌트를 위한 디렉토리
 - components > atom: 가장 작은 단위의 재사용 가능한 컴포넌트 (button, div, ...)
 - components > molecules: atom 들을 모아둔, 조금 더 상위 레벨의 재사용 가능한 컴포넌트.
 - components > views: 완성된 화면
+
+### src > assets
+.png, .jpg, .svg 와 같은 이미지 및 아이콘 파일이 위치
+
 ### lib
 라이브러리가 위치
+
 ### types
 타입스크립트 타입 참조가 위치
-### imgs
-.png, .jpg, .svg 와 같은 이미지 및 아이콘 파일이 위치
-### src > components > assets
-constants.tsx 에 필요한 img 로드해서 export
 
+# Stack
 ---
 - TypeScript
 - React
@@ -24,22 +27,32 @@ constants.tsx 에 필요한 img 로드해서 export
 - Git, Github Actions
 - Vercel
 ---
+
 ### 2021. 12. 2 (목)
 - 기본 프로젝트 세팅
 - React Query, Emotion.js 초기 예제 세팅
 - Github Actions 세팅
 
----
 ### 2021. 12. 18 (토)
 - 공통으로 사용할 메뉴바 컴포넌트 src/components/molecules에 추가(MenuBar.tsx, MenuBar.css)
 - App.css 수정
 ---
-### 2021. 12. 19 (토)
-- 커뮤니티 페이지에 달력 추가! 현재 미완성. 계속 작업중~
-    > views/community 폴더 생성해서 작업중입니닷
+
+
+## 빈채
+---
+### [ 커뮤니티 - 달력 ] 2021. 12. 19 (일)
+- 커뮤니티 페이지에 달력 추가! 현재 반완성. 계속 작업중~
+    > views/community 폴더 생성해서 작업 중(추후 필요시 다시 정리하겠음)
 - Board.tsx -> Community.tsx 로 이름 변경!
 - App.css 파일 수정 & MenuBar css 조금 수정
 - 달력에는 styled component 적용
+- 달력 기본 기능 및 UI 완성(기본..) 
+- src > lib > DateUtils : 날짜 관련 자주 사용할 것 같은 모듈 빼놓음
+
+### [ 커뮤니티 - 달력 & 게시판 ] 2021.12.21 (화)
+- 달력에 클릭 이벤트 및 이동 버튼에 transition 추가
+- 게시글 카드 추가 및 UI 작업 중
 
 ## 태양
 ---
