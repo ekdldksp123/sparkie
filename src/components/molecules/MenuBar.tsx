@@ -1,13 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 /** @jsxImportSource @emotion/react */
 import { css } from '@emotion/react';
 import './MenuBar.css';
-//
-// interface Props {
-//     isClicked: boolean;
-//
-//     onClick: () => void;
-// }
 
 const NavBar = () => {
   return (
@@ -46,9 +40,7 @@ const Burger = () => {
 
 const nav = css`
   background-color: #f65219;
-  width: 100vw;
-  padding-top: 2.8vh;
-  padding-bottom: 2.8vh;
+  padding: 2.5vh 1vw 2.5vh;
 `;
 
 const burger = css`
