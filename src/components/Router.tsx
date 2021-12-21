@@ -6,7 +6,7 @@ import Sparkie from './views/Sparkie';
 import Board from './views/Board';
 import About from './views/About';
 import Contact from './views/Contact';
-import QnA from './views/QnA';
+import QnA from './views/QnA/QnA';
 import QnAtest from './views/QnAtest';
 
 const Router = () => {
