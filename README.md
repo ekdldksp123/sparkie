@@ -38,7 +38,12 @@
 - 공통으로 사용할 메뉴바 컴포넌트 src/components/molecules에 추가(MenuBar.tsx, MenuBar.css)
 - App.css 수정
 ---
-
+## 성준
+---
+### [main 화면 - 메뉴 스와이퍼 적용] 2021.12.23 (목)
+- 몇 일 동안 react 실행시 에러 계속 뜨는거 해결...... npm 설치 다시 하는게 정신적으로 편한거 같음
+- main 메뉴화면에 swiper 적용
+- 모바일 화면에 맞도록 반응형 작업 중
 
 ## 빈채
 ---
