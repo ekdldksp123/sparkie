@@ -27,6 +27,11 @@ const next = css`
     width: 50px;
     height: 50px;
     align-self: flex-end;
+
+    transition: transform .2s;
+    &:hover {
+        transform: scale(1.7);
+    }
 `;
 
 const prev = css`
@@ -36,5 +41,10 @@ const prev = css`
     -ms-transform: rotate(180deg); /* IE 9 */
     -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
     transform: rotate(180deg);
+
+    transition: transform .2s;
+    &:hover {
+        transform: scale(1.7) rotate(180deg);
+    }
 `;
 
