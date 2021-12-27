@@ -30,7 +30,8 @@ jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에�
         git config --global user.email ekdldksp123@naver.com
         git config --global user.name ekdldksp123
         git add -A
-        git rm --cached .\config.env
+        git rm --cached ./config.env
+      continue-on-error: true
     - name: commit changed files
       run: |
         git config --global user.email ekdldksp123@naver.com
