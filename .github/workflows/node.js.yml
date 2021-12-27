@@ -29,14 +29,21 @@ jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에�
       run: |
         git config --global user.email ekdldksp123@naver.com
         git config --global user.name ekdldksp123
+<<<<<<< HEAD
         git add -A
         git rm --cached .\config.env
+=======
+        git add .
+>>>>>>> 6c1bcd0f89daa1f4fc2b36189b1522d4f4be51df
     - name: commit changed files
       run: |
         git config --global user.email ekdldksp123@naver.com
         git config --global user.name ekdldksp123
         git commit -m "Auto updating changed files"
+<<<<<<< HEAD
       continue-on-error: true
+=======
+>>>>>>> 6c1bcd0f89daa1f4fc2b36189b1522d4f4be51df
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
