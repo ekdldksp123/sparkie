@@ -47,4 +47,5 @@ jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에�
     - run: npm run build --if-present
       env:
         CI: ''
+      continue-on-error: true
     - run: npm test
