@@ -19,7 +19,6 @@ const Calendar: React.FC<Props> = (props:Props) => {
         setYear(props.year);
         setMonth(props.month);
         init(year, month);
-        console.log(dateSet);
     },[]);
 
     useEffect(() => {

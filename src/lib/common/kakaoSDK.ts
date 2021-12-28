@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-function useScript(src:string) {
+const useScript = (src:string) => {
     // Keep track of script status ("idle", "loading", "ready", "error")
     const [status, setStatus] = useState<string>(src ? "loading" : "idle");
 
