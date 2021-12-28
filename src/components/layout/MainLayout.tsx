@@ -6,7 +6,7 @@ const MainLayout: React.FC = ({ children }) => {
   const location = useLocation();
   return (
     <>
-      {location.pathname !== '/' && <NavBar />}
+      {(location.pathname !== '/' && location.pathname !== '/main') && <NavBar />}
       {children}
     </>
   );
