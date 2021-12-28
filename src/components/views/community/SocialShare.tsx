@@ -31,10 +31,10 @@ const ShareModal:React.FC<ModalProps> = ({ visible, setVisible }:ModalProps) => 
     const status = useScript("https://developers.kakao.com/sdk/js/kakao.js");
     
     useEffect(() => {
-        if (status === "ready" && Kakao) {
-			if (!Kakao.isInitialized()) {
-                console.log(process.env.REACT_APP_KAKAO_SHARE_KEY);
-				Kakao.init(process.env.REACT_APP_KAKAO_SHARE_KEY);
+        console.log(process.env.REACT_APP_KAKAO_SHARE_KEY);
+        if (status === "ready" && window.Kakao) {
+			if (!window.Kakao.isInitialized()) {
+				window.Kakao.init(process.env.REACT_APP_KAKAO_SHARE_KEY);
             }
         }
     }, [status]);
