@@ -58,10 +58,10 @@ const community = css`
 `;
 
 const calendar = css`
-  width: 35%;
+  width: 40%;
   align-self: flex-end;
 `;
 
 const board = css`
-  width: 65%;
+  width: 60%;
 `;

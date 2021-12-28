@@ -23,6 +23,21 @@ jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에�
     steps:  
     #  Checkout 액션과 Setup Node.js environment 액션 사용한 것이다.
     - uses: actions/checkout@v2
+    - name: check for changes
+      run: git status
+    - name: stage changed files
+      run: |
+        git config --global user.email ekdldksp123@naver.com
+        git config --global user.name ekdldksp123
+        git add -A
+        git rm --cached ./config.env
+      continue-on-error: true
+    - name: commit changed files
+      run: |
+        git config --global user.email ekdldksp123@naver.com
+        git config --global user.name ekdldksp123
+        git commit -m "Auto updating changed files"
+      continue-on-error: true
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -32,4 +47,5 @@ jobs: # Job은 여러 Step으로 구성되고, 가상 환경의 인스턴스에�
     - run: npm run build --if-present
       env:
         CI: ''
+      continue-on-error: true
     - run: npm test
