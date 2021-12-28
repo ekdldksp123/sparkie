@@ -1,9 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Calendar from './community/Calendar';
-import {Props} from './community/DateProps';
+import {Props} from '../../types/components/views/DateProps';
 import Board from "./community/Board";
-import { Posts, Post, PostData, Comment } from "./community/BoardProps";
+import { Posts, Post, PostData, Comment } from "../../types/components/views/BoardProps";
 import { formatDateToString } from "../../lib/common/DateUtils";
 
 const props:Props = {

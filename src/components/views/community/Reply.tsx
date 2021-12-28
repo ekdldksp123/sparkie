@@ -2,7 +2,7 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { Comment } from "./BoardProps";
+import { Comment } from "../../../types/components/views/BoardProps";
 import { ReactComponent as P1 } from '../../../assets/boy.svg';
 import { ReactComponent as P2 } from '../../../assets/girl.svg';
 

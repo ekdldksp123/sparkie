@@ -2,7 +2,7 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { Post, Comment } from "./BoardProps";
+import { Post, Comment } from "../../../types/components/views/BoardProps";
 // import { ReactComponent as Share } from '../../../assets/share.svg';
 import ShareButton from "./SocialShare";
 import { ReactComponent as Like } from '../../../assets/like.svg';
