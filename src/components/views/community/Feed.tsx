@@ -3,10 +3,10 @@ import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { Post, Comment } from "../../../types/components/views/BoardProps";
-// import { ReactComponent as Share } from '../../../assets/share.svg';
 import ShareButton from "./SocialShare";
 import { ReactComponent as Like } from '../../../assets/like.svg';
-import { ReactComponent as Comments } from '../../../assets/comment.svg';
+// import { ReactComponent as Comments } from '../../../assets/comment.svg';
+import Comments from "./Comments";
 import { ReactComponent as P1 } from '../../../assets/boy.svg';
 import { ReactComponent as P2 } from '../../../assets/girl.svg';
 import Reply from "./Reply";
@@ -23,7 +23,7 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
                 <Title id="title">{feed.title}</Title>
                 <Content>{feed.content}</Content>
                 <Icons>
-                    <Comments css={cmt}/>
+                    <Comments cnt={feed.comments.length}/>
                     <Like />
                     <ShareButton />
                 </Icons>
