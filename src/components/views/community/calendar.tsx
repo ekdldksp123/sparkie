@@ -169,7 +169,7 @@ const Weekday = styled.div`
 
 const Row = styled.div`
     width: 100%;
-    height: 16%;
+    height: 13%;
     display: flex;
     justify-content: space-between;
     padding: 10px 0 10px 0;
