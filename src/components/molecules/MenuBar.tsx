@@ -1,5 +1,6 @@
 /** @jsxImportSource @emotion/react */
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
 
 import { css } from '@emotion/react';
 import './MenuBar.css';
@@ -12,8 +13,9 @@ const NavBar = () => {
   );
 };
 
-const Burger = () => {
+const Burger = ():JSX.Element => {
   const [isClicked, setIsClicked] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (isClicked) toggleBurger();
@@ -24,6 +26,7 @@ const Burger = () => {
     burger.addEventListener('click', () => {
       burger.classList.toggle('toggle');
     });
+    navigate('/main');
   };
 
   return (
