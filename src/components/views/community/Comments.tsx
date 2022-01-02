@@ -5,12 +5,9 @@ import { useEffect, useState } from 'react';
 import { Post, Comment } from "../../../types/components/views/BoardProps";
 import ShareButton from "./SocialShare";
 import { ReactComponent as Cmt } from '../../../assets/comment.svg';
+import { CommentProps } from "../../../types/components/views/CounterProps";
 
-interface Counter {
-    cnt: number,
-}
-
-const Comments:React.FC<Counter> = ({cnt}:Counter) => {
+const Comments:React.FC<CommentProps> = ({cnt, showCmts, setShowCmts}:CommentProps) => {
     const [count, setCount] = useState<number>(0);
 
     useEffect(() => {
@@ -19,7 +16,7 @@ const Comments:React.FC<Counter> = ({cnt}:Counter) => {
     
     return(
         <>  
-            <Cmt css={cmt}/>
+            <Cmt css={cmt} onClick={() => setShowCmts(!showCmts)}/>
             <Counter>{count}</Counter>  
         </>
     )

@@ -5,14 +5,26 @@ import { useEffect, useState } from 'react';
 import { Post, Comment } from "../../../types/components/views/BoardProps";
 import ShareButton from "./SocialShare";
 import { ReactComponent as Like } from '../../../assets/like.svg';
-// import { ReactComponent as Comments } from '../../../assets/comment.svg';
 import Comments from "./Comments";
-import { ReactComponent as P1 } from '../../../assets/boy.svg';
-import { ReactComponent as P2 } from '../../../assets/girl.svg';
 import Reply from "./Reply";
+import NewReply from "./AddReply";
 
 const Feed:React.FC<Post> = ({feed}:Post) => {
-    
+
+    const [showCmts, setShowCmts] = useState<boolean>(false);
+    const [reply, setReply] = useState<Comment>();
+
+    useEffect(() => {
+        const data:Comment = {
+            writer: '',
+            date: '',
+            profile: '',
+            content: '',
+        };
+        feed.comments.push(data);
+        setReply(data);
+    },[feed]);
+
     return (
         <>
         <Card>
@@ -23,14 +35,15 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
                 <Title id="title">{feed.title}</Title>
                 <Content>{feed.content}</Content>
                 <Icons>
-                    <Comments cnt={feed.comments.length}/>
+                    <Comments cnt={feed.comments.length - 1} showCmts={showCmts} setShowCmts={setShowCmts}/>
                     <Like />
                     <ShareButton />
                 </Icons>
             </CardPadding>
         </Card>
-        {feed.comments.map((reply:Comment, idx:number) => {
-            return <Reply key={idx} writer={reply.writer} date={reply.date} profile={reply.profile} content={reply.content}/>
+        {showCmts && feed.comments.map((reply:Comment, idx:number) => {
+            if(reply.writer !== '') return <Reply key={idx} writer={reply.writer} date={reply.date} profile={reply.profile} content={reply.content}/>
+            else return <NewReply key={idx} />
         })}
         </>
     );
