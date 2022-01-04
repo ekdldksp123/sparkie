@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import { ReactComponent as Arrow } from '../../../assets/next.svg';
-import { ClickEventProps } from './DateProps';
+import { ClickEventProps } from '../../../types/components/views/DateProps';
 
 export const NextBtn:React.FC<ClickEventProps> = (props) => {
     const onNextClickEventHandler = () => {
