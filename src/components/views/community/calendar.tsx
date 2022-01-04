@@ -3,7 +3,7 @@ import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { weekdays, months } from "./CalendarBase";
-import { Props } from './DateProps';
+import { Props } from '../../../types/components/views/DateProps';
 import { NextBtn, PrevBtn } from "./CalendarBtn";
 import { leftPad } from "../../../lib/common/DateUtils";
 import Day from "./Day";
@@ -16,11 +16,9 @@ const Calendar: React.FC<Props> = (props:Props) => {
     const [selectedDate, setSelectedDate] = useState<string>('');
 
     useEffect(() => {
-        console.log(`year: ${props.year} month: ${props.month}`)
         setYear(props.year);
         setMonth(props.month);
         init(year, month);
-        console.log(dateSet);
     },[]);
 
     useEffect(() => {
@@ -171,7 +169,7 @@ const Weekday = styled.div`
 
 const Row = styled.div`
     width: 100%;
-    height: 16%;
+    height: 13%;
     display: flex;
     justify-content: space-between;
     padding: 10px 0 10px 0;
