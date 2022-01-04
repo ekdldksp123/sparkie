@@ -6,6 +6,8 @@ import RightLayout from './RightLayout';
 
 const StyledSection = styled.section`
   display: flex;
+  padding: 2rem;
+  border: 1px solid black;
 `;
 
 const StyledTitle = styled.h1`
