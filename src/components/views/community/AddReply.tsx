@@ -14,9 +14,9 @@ const NewReply = ():JSX.Element => {
                     <Writer><input></input></Writer>
                     <ReplyContent><textarea rows={2} cols={60}></textarea></ReplyContent>
                 </div>
-                <div css={btn_area}>
-
-                </div>
+                {/* <div css={btn_area}> */}
+                    <SubmitBtn>Submit</SubmitBtn>
+                {/* </div> */}
             </ReplyPadding>
         </div>
     );
@@ -76,7 +76,7 @@ const Profile = styled.div`
 `;
 
 const right_side = css`
-    flex-basis: 70%;    
+    flex-basis: 80%;    
     align-self: flex-end;    
     display: flex;
     flex-direction: column;  
@@ -85,10 +85,33 @@ const right_side = css`
 const btn_area = css`
     flex-basis: 20%;  
     display: flex;
-    flex-direction: column; 
+    flex-direction: row-reverse; 
     align-self: flex-end;
     & button {
-        align-self: center;
+        #align-self: flex-end;    
+    }
+`;
+
+const SubmitBtn = styled.button`
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #fff;
+    border-radius: 6px;
+    border: none;
+    margin: 10px;
+    padding: 1em 2em;
+    background-size: 300% 300%;
+    color: white;
+    box-shadow: 0 4px 6px rgba(50, 50, 93, 0.11), 0 1px 3px rgba(0, 0, 0, 0.08);
+    background-image: linear-gradient(to right, #26c2ff 0%, #abfcff 50%, #5ec4ff 100%);
+    transition: 0.5s;
+
+    &: hover {
+        background-position: right center;
     }
 `;
 
