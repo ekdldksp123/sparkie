@@ -14,6 +14,9 @@ const NewReply = ():JSX.Element => {
                     <Writer><input></input></Writer>
                     <ReplyContent><textarea rows={2} cols={60}></textarea></ReplyContent>
                 </div>
+                <div css={btn_area}>
+
+                </div>
             </ReplyPadding>
         </div>
     );
@@ -73,12 +76,20 @@ const Profile = styled.div`
 `;
 
 const right_side = css`
-    flex-basis: 83%;    
+    flex-basis: 70%;    
     align-self: flex-end;    
     display: flex;
-    flex-direction: column;
+    flex-direction: column;  
+`;
 
-    
+const btn_area = css`
+    flex-basis: 20%;  
+    display: flex;
+    flex-direction: column; 
+    align-self: flex-end;
+    & button {
+        align-self: center;
+    }
 `;
 
 const Writer = styled.h3`

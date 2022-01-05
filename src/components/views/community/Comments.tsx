@@ -25,11 +25,11 @@ const Comments:React.FC<CommentProps> = ({cnt, showCmts, setShowCmts}:CommentPro
 export default Comments;
 
 const Counter = styled.button`
-    background: #FAFAFA;
+    background: #84E4F7;
     border-radius: 35%;
     outline: 0;
     border:none;
-    color: black;
+    color: white;
     height: 20%;
     align-self: flex-start;
 `;
