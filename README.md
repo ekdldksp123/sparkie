@@ -91,19 +91,37 @@
 1. 지도 시점 이동 이벤트 감지하면 계산하여 새 마커 생성
     - 문제: 공공api의 request param이 너무 제한적.. (행정구역분류코드 앞 두 자리만 받고 있음.. ex) 11: 서울 전체)
     - 고민을 좀 더 해 보자.
+    - 방안: Mongo Cluster에 적재 // TODO 1/6
 2. 지도는 구 이름만 나눠서 표시하고 구마다 전기차 충전소 개수를 표시
     - 아니면 다른 지도를 가져와서 쓰다가 상세지도를 표시할 때, 카카오 맵을 써야할지도...
     - zoom level을 낮추면 되려나? 이건 지도 document를 공부해야겠음.
     - 갯수 표시는 어려울 거 같진 않은데, 상기한 api 의 제한적 문제로 인해 함수를 직접 구현해야 함.
+    - 방안: Cluster 사용해볼 것 // TODO 1/7
 3. 마우스가 지도 안에 들어와서 특정 지역 안에 들어오면 색깔이 바뀌게 한다
     - 카카오 지도 object의 className과 id 등이 구조적으로 정해져 있다면, custom stylesheet로 가능하긴 할 듯 하나 모르겠당
     - 고거만 되면 호버로 기냥.
-    - 근데 지도가 그냥 png 파일일텐데?
+    - 방안: 갓카오의 api를 확인하자 // TODO 1/8
 4. 마커는 색깔별로 그 갯수의 크기를 표시하고, 헤드에 정확한 숫자를 표시. 핀포인트를 클릭하면 세부 지도로 이동?
-    - 가능할 것 같긴 함.
-5. 우선 지도는 서울만 세팅해놓고 해본다음에 추후 논의
-    - 그럽시당.
+    - 각 충전소를 마커로 표시하고, 충전소의 상세내용을 클릭 시 표시하기 // TODO 1/9
+5. 우선 지도는 서울만 세팅해놓고 해본다음에 추후 논의 // TODO 1/10
+    - 광역시 -> 시 레벨 지도로 '구' 세팅
+    - 기타 -> 도 레벨 지도로 '시' 세팅
 ---
 ### [큐엔에이 관련]
 
-추후 함께 정리.
+220105 Todos
+Generate Mockup data
+Data structure { id: 1, name: 'sunny', messages: [], stacks: [ {}, {}, {} ], }
+Animated Messages
+LeftBox icons (awesomefont)
+RightBox layout and paint
+
+220106 Todos
+Mongo Cluster storing
+: Charger Data
+: QnA Data
+
+220107 Todos
+Map Cluster
+Change markers into SVG
+
