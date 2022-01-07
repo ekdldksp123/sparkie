@@ -1,24 +1,54 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { Comment } from "../../../types/components/views/BoardProps";
 import { ReactComponent as Someone } from '../../../assets/who.svg';
 
+type Reply = {
+    name: '',
+    content: '',
+}
+
+interface RefObject<T> {
+    readonly current: T | null;
+}
+
 const NewReply = ():JSX.Element => {
+
+    const nameRef = useRef<HTMLInputElement>(null);
+    const contentRef = useRef<HTMLTextAreaElement>(null);
+
+    const [comment, setComment] = useState<Reply>({
+        name: '',
+        content: '',
+    });
+
+    const onChangeHandler = (e: React.ChangeEvent<any>) => {
+        const {name, value} = e.target;
+        setComment({...comment, [name]: value});
+    }
+
+
+    const onSubmit = () => {
+        if(comment.name === '') nameRef.current?.focus();
+        else if(comment.content === '') contentRef.current?.focus();
+        else console.log(comment);
+    }
+
     return (
         <div css={reply}>
             <ReplyPadding>
                 <Profile><Someone/></Profile>
                 <div css={right_side}>
                     <Writer>
-                        <Input placeholder="Name / Nickname" />
+                        <Input ref={nameRef} name="name" placeholder="Name / Nickname" onChange={(e) => onChangeHandler(e)}/>
                     </Writer>
                     <ReplyContent>
-                        <TextArea placeholder="Share your thoughts" autoComplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"/>
+                        <TextArea ref={contentRef} name="content" onChange={(e) => onChangeHandler(e)} placeholder="Share your thoughts" autoComplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"/>
                     </ReplyContent>
                 </div>
-                <SubmitBtn onClick={() => alert('submit')}>Submit</SubmitBtn>
+                <SubmitBtn onClick={() => onSubmit()}>Submit</SubmitBtn>
             </ReplyPadding>
         </div>
     );
@@ -91,17 +121,14 @@ const Input = styled.input`
     color: #555;
     box-sizing: border-box;
     font-family: 'Arvo'; 
-    padding: 10px 0px;
-    position: relative;
 
     &:focus {
         outline: none;    
     }
+
     &:focus::-webkit-input-placeholder {
-        color: dodgerblue;
-    }
-    &:focus+.underline {
-        transform: scale(1);
+        border-bottom: 1px solid #26c2ff;
+        color: #26c2ff;
     }
 `;
 
@@ -112,12 +139,12 @@ const TextArea = styled.textarea`
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
     -moz-border-top-colors: none;
-    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
-    border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+    background: none repeat scroll 0 0 rgba(94,196,255, 0.07);
+    border-color: #FFFFFF;
     border-image: none;
     border-radius: 6px 6px 6px 6px;
-    border-style: none solid solid none;
-    border-width: medium 1px 1px medium;
+    border-style: solid solid solid solid;
+    border-width: 1px 1px 1px 1px;
     color: #555555;
     font-family: "Helvetica Neue", Helvetica,Arial,sans-serif;
     font-size: 1em;
@@ -127,6 +154,7 @@ const TextArea = styled.textarea`
 
     &:focus {
         background: none repeat scroll 0 0 #FFFFFF;
+        border-color: #26c2ff;
         outline-width: 0;
     }
 `;
