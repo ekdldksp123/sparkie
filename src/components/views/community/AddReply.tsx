@@ -3,7 +3,7 @@ import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { Comment } from "../../../types/components/views/BoardProps";
-import { ReactComponent as Someone } from '../../../assets/question_mark.svg';
+import { ReactComponent as Someone } from '../../../assets/who.svg';
 
 const NewReply = ():JSX.Element => {
     return (
@@ -11,12 +11,14 @@ const NewReply = ():JSX.Element => {
             <ReplyPadding>
                 <Profile><Someone/></Profile>
                 <div css={right_side}>
-                    <Writer><input></input></Writer>
-                    <ReplyContent><textarea rows={2} cols={60}></textarea></ReplyContent>
+                    <Writer>
+                        <Input placeholder="Name / Nickname" />
+                    </Writer>
+                    <ReplyContent>
+                        <TextArea placeholder="Share your thoughts" autoComplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"/>
+                    </ReplyContent>
                 </div>
-                {/* <div css={btn_area}> */}
-                    <SubmitBtn>Submit</SubmitBtn>
-                {/* </div> */}
+                <SubmitBtn onClick={() => alert('submit')}>Submit</SubmitBtn>
             </ReplyPadding>
         </div>
     );
@@ -52,24 +54,24 @@ const reply = css`
         background-color: #C4C4C4;
         opacity: 0.5 !important;
     }
-    
 `;
 
 const ReplyPadding = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 10px 10px 10px 10px;
+    padding: 8px 10px 8px 10px;
 `;
 
 const Profile = styled.div`
-    align-self: flex-start;
+    float: left;
+    #align-self: flex-start;
     display: flex;
     flex-direction: column;
-    width: 60px;
-    height: 100%;
+    width: 60px !important;
+    height: 100% !important;
     padding-right: 10px;
     & svg {
-        width:100%;
+        width: 60px;
         height:auto;
         align-self: center;
     }
@@ -82,13 +84,50 @@ const right_side = css`
     flex-direction: column;  
 `;
 
-const btn_area = css`
-    flex-basis: 20%;  
-    display: flex;
-    flex-direction: row-reverse; 
-    align-self: flex-end;
-    & button {
-        #align-self: flex-end;    
+const Input = styled.input`
+    background-color: transparent;
+    border: none;
+    border-bottom: 1px solid #CCC;
+    color: #555;
+    box-sizing: border-box;
+    font-family: 'Arvo'; 
+    padding: 10px 0px;
+    position: relative;
+
+    &:focus {
+        outline: none;    
+    }
+    &:focus::-webkit-input-placeholder {
+        color: dodgerblue;
+    }
+    &:focus+.underline {
+        transform: scale(1);
+    }
+`;
+
+const TextArea = styled.textarea`
+    width: 95% !important;
+    height: 20px;
+    -moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 rgba(0, 0, 0, 0.07);
+    border-color: -moz-use-text-color #FFFFFF #FFFFFF -moz-use-text-color;
+    border-image: none;
+    border-radius: 6px 6px 6px 6px;
+    border-style: none solid solid none;
+    border-width: medium 1px 1px medium;
+    color: #555555;
+    font-family: "Helvetica Neue", Helvetica,Arial,sans-serif;
+    font-size: 1em;
+    line-height: 1.4em;
+    padding: 5px 8px;
+    transition: background-color 0.2s ease 0s;
+
+    &:focus {
+        background: none repeat scroll 0 0 #FFFFFF;
+        outline-width: 0;
     }
 `;
 
@@ -118,6 +157,12 @@ const SubmitBtn = styled.button`
 const Writer = styled.h3`
     padding-bottom: 5px;
     align-self: flex-start;
+    font-size: 0.8em;
+
+    background-color: #FFF;
+    border-radius: 2px;
+    #box-shadow: 0px 2px 1px 0px #DDD;
+    box-sizing: border-box;
 `;
 
 const ReplyContent = styled.div`

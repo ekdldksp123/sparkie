@@ -48,10 +48,10 @@ const Modal:React.FC<ModalProps> = ({visible, setVisible}:ModalProps) => {
                     <Container>
                         <Columns>
                             <FacebookShareButton url={currentUrl}>
-                                <FacebookIcon size={48} round={true} borderRadius={24}></FacebookIcon>
+                                <FacebookIcon size={48} round={true} borderRadius={24} css={btn}/>
                             </FacebookShareButton>
                             <TwitterShareButton url={currentUrl}>
-                                <TwitterIcon size={48} round={true} borderRadius={24}></TwitterIcon>
+                                <TwitterIcon size={48} round={true} borderRadius={24} css={btn}/>
                             </TwitterShareButton>
                             <CopyToClipboard text={currentUrl}>
                                 <CopyUrlBtn>URL</CopyUrlBtn>
@@ -138,9 +138,17 @@ const CopyUrlBtn = styled.button`
 	}
 `;
 
+const btn = css`
+    transition: transform .2s;    
+    &:hover {
+        transform: scale(1.7);
+    }
+`;
+
 const kakao = css`
     width: 48px;
     height: 48px;
+    transition: transform .2s;    
     &:hover {
         transform: scale(1.7);
     }
