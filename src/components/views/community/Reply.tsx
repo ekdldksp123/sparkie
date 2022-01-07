@@ -56,7 +56,7 @@ const reply = css`
 const ReplyPadding = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 12px 10px 10px 10px;
+    padding: 10px 10px 10px 10px;
 `;
 
 const Profile = styled.div`
