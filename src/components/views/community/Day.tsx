@@ -1,12 +1,12 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { holidays } from "./CalendarBase";
-import { Props } from '../../../types/components/views/DateProps';
+import { DateProps } from '../../../types/components/views/DateProps';
 import { formatDateToString } from "../../../lib/common/DateUtils";
 
-interface DayProps extends Props {
+interface DayProps extends DateProps {
     date: string,
     day: number,
     idx: number,
