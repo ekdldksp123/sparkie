@@ -34,8 +34,13 @@ const BottomBox = styled.div`
   p {
   }
 `;
+type StackInformation = {
+  selectedStack: any;
+};
+const InnerBox: React.FC<StackInformation> = (props) => {
+  console.log(props.selectedStack);
+  const stack = props.selectedStack;
 
-const InnerBox = (props: any) => {
   return (
     <StyledBox>
       {/* 상단 UI : flex */}
@@ -43,15 +48,15 @@ const InnerBox = (props: any) => {
         {/* 중간에 가도록. */}
         <LeftBox>
           <div>
-            <h1>오늘 중고차 구매했는데요..</h1>
-            <span>3분 전</span>
+            <h1>{stack.name}</h1>
+            {/*<span>timeobj</span>*/}
           </div>
         </LeftBox>
-        <RightBox>써니킴</RightBox>
+        <RightBox>name</RightBox>
       </UpperBox>
       {/*  하단 UI */}
       <BottomBox>
-        <p>뻥입니다. 하하하하하하</p>
+        <p>{stack.description}</p>
       </BottomBox>
     </StyledBox>
   );
