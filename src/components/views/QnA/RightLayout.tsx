@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import InnerBox from './InnerBox';
+import { Profile } from '../../../types/components/views/QnA';
 
 const StyledRightBox = styled.div`
   display: flex;
   justify-content: flex-start;
-  width: 75%;
-  border: 1px solid red;
+  width: 70%;
 `;
 
 const StyledContent = styled.div`
@@ -22,13 +22,18 @@ const StyledContent = styled.div`
   justify-content: center;
 `;
 
-const RightLayout = (props: any) => {
-  const [post, setPost] = useState();
+type RightProps = {
+  profile: Profile;
+  stack: string;
+};
 
+const RightLayout: React.FC<RightProps> = ({ profile, stack }) => {
+  const stacks = profile.stacks;
+  const selectedStack = stacks.find((item: any) => item.name === stack);
   return (
     <StyledRightBox>
       <StyledContent>
-        <InnerBox post={post} />
+        <InnerBox selectedStack={selectedStack} />
       </StyledContent>
     </StyledRightBox>
   );
