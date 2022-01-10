@@ -3,12 +3,12 @@ import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import { weekdays, months } from './CalendarBase';
+import {Props} from '../../../types/components/views/DateProps';
 import { NextBtn, PrevBtn } from './CalendarBtn';
 import { leftPad } from '../../../lib/common/DateUtils';
 import Day from './Day';
-import { DateProps } from '../../../types/components/views/DateProps';
 
-const Calendar: React.FC<DateProps> = (props: DateProps) => {
+const Calendar: React.FC<Props> = (props: Props) => {
   const [month, setMonth] = useState<number>(0);
   const [year, setYear] = useState<number>(0);
   const [dateSet, setDateSet] = useState<number[][]>([]);
