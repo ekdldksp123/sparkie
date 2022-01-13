@@ -5,6 +5,9 @@ import {DateProps} from '../../types/components/views/DateProps';
 import Board from "./community/Board";
 import { Posts, Post, PostData, Comment } from "../../types/components/views/BoardProps";
 import { formatDateToString } from "../../lib/common/DateUtils";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { useQuery } from "react-query";
 
 const props:DateProps = {
   year: new Date().getFullYear(),
@@ -57,17 +60,24 @@ const post:Post = {
 }
 
 const Community = () => {
+  const [posts, setPosts] = useState<Posts>();
 
-  return (
-   <div css={community}>
-      <div css={board}>
-        <Board posts={[post]}/>
-      </div>
-      <div css={calendar}>
-        <Calendar year={props.year} month={props.month}/>
-      </div>
-   </div>
+  const { isLoading, error, data }: any = useQuery("repoData", async () =>
+    await axios.get('api/community')
   );
+  if(isLoading) return <div>loading...</div>;
+  if(error) return <div>{error.message}</div>;
+  if(data) console.log(data);
+  return (
+    <div css={community}>
+       <div css={board}>
+         <Board posts={[post]}/>
+       </div>
+       <div css={calendar}>
+         <Calendar year={props.year} month={props.month}/>
+       </div>
+    </div>
+   );
 };
 
 export default Community;
