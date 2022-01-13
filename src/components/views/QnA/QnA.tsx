@@ -1,11 +1,13 @@
-import React, { useCallback, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import writePostApi from '../../../lib/api/post/writePostApi';
 import LeftLayout from './LeftLayout';
 import RightLayout from './RightLayout';
+import getUserProfile from '../../../lib/api/user/getUserProfile';
+import { Profile, Stack } from '../../../types/components/views/QnA';
 
 const StyledSection = styled.section`
   display: flex;
+  padding: 2rem;
 `;
 
 const StyledTitle = styled.h1`
@@ -15,46 +17,35 @@ const StyledTitle = styled.h1`
 `;
 
 const QnA = () => {
-  const [post, setPost] = useState<Post>({
-    title: '',
-    content: '',
+  const [user, setUser] = useState<string>('sunny');
+  const [profile, setProfile] = useState<Profile>({
+    id: 0,
+    name: '',
+    messages: [],
+    stacks: [],
   });
+  const [stack, setStack] = useState<Stack>('frontend');
 
-  const onChange = (e: any) => {
-    setPost({
-      ...post,
-      [e.target.name]: e.target.value,
+  useEffect(() => {
+    getUserProfile(user).then((res) => {
+      setProfile(res.data);
     });
-  };
 
-  const writePost = useCallback(() => {
-    writePostApi(post)
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((e) => {
-        console.warn(e);
-      });
-  }, [post]);
+    // 초기화
+    setStack('frontend');
+  }, [user]);
 
   return (
     <>
       <StyledTitle>QnA</StyledTitle>
       <StyledSection>
-        <LeftLayout />
-        <RightLayout />
-        {/*<StyledForm>*/}
-        {/*  <input type="text" name="title" onChange={onChange} />*/}
-        {/*  <input type="text" name="content" onChange={onChange} />*/}
-        {/*  <button*/}
-        {/*    onClick={(e) => {*/}
-        {/*      e.preventDefault();*/}
-        {/*      writePost();*/}
-        {/*    }}*/}
-        {/*  >*/}
-        {/*    post*/}
-        {/*  </button>*/}
-        {/*</StyledForm>*/}
+        <LeftLayout
+          user={user}
+          setUser={setUser}
+          profile={profile}
+          setStack={setStack}
+        />
+        <RightLayout stack={stack} profile={profile} />
       </StyledSection>
     </>
   );

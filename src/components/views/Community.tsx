@@ -1,13 +1,15 @@
 /** @jsxImportSource @emotion/react */
 import { css } from "@emotion/react";
 import Calendar from './community/Calendar';
-import {Props} from '../../types/components/views/DateProps';
+import {DateProps} from '../../types/components/views/DateProps';
 import Board from "./community/Board";
 import { Posts, Post, PostData, Comment } from "../../types/components/views/BoardProps";
 import { formatDateToString } from "../../lib/common/DateUtils";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { useQuery } from "react-query";
 
-const props:Props = {
+const props:DateProps = {
   year: new Date().getFullYear(),
   month: new Date().getMonth(),
 }
@@ -60,34 +62,22 @@ const post:Post = {
 const Community = () => {
   const [posts, setPosts] = useState<Posts>();
 
-  useEffect(() => {
-    const config = {
-      headers: {'Accept': 'application/json'},
-    };
-
-    fetch('/api/community', config)
-      .then((res:Response) => res.json())
-      .then((data) => {
-        if(data) {
-          console.log(data);
-          // const postList:Posts = {
-          //   posts: data,
-          // }
-          // setPosts(postList);
-        }
-      }).catch(err => console.log(err))
-  },[]);
-
-  return (
-   <div css={community}>
-      <div css={board}>
-        <Board posts={[post]}/>
-      </div>
-      <div css={calendar}>
-        <Calendar year={props.year} month={props.month}/>
-      </div>
-   </div>
+  const { isLoading, error, data }: any = useQuery("repoData", async () =>
+    await axios.get('api/community')
   );
+  if(isLoading) return <div>loading...</div>;
+  if(error) return <div>{error.message}</div>;
+  if(data) console.log(data);
+  return (
+    <div css={community}>
+       <div css={board}>
+         <Board posts={[post]}/>
+       </div>
+       <div css={calendar}>
+         <Calendar year={props.year} month={props.month}/>
+       </div>
+    </div>
+   );
 };
 
 export default Community;
