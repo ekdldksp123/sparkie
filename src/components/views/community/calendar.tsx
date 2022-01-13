@@ -73,8 +73,7 @@ const Calendar: React.FC<Props> = (props:Props) => {
                         dateSet.map((days:number[], index:number) => {
                             return (
                                 <Row key={index}>
-                                  {days.length !== 0 &&
-                                    days.map((day:number, idx:number) => {
+                                  {days.length !== 0 && days.map((day:number, idx:number) => {
 
                                         let date:string;
                                         if(day !== 0) {

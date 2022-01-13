@@ -5,6 +5,7 @@ import {Props} from '../../types/components/views/DateProps';
 import Board from "./community/Board";
 import { Posts, Post, PostData, Comment } from "../../types/components/views/BoardProps";
 import { formatDateToString } from "../../lib/common/DateUtils";
+import { useEffect, useState } from "react";
 
 const props:Props = {
   year: new Date().getFullYear(),
@@ -57,6 +58,25 @@ const post:Post = {
 }
 
 const Community = () => {
+  const [posts, setPosts] = useState<Posts>();
+
+  useEffect(() => {
+    const config = {
+      headers: {'Accept': 'application/json'},
+    };
+
+    fetch('/api/community', config)
+      .then((res:Response) => res.json())
+      .then((data) => {
+        if(data) {
+          console.log(data);
+          // const postList:Posts = {
+          //   posts: data,
+          // }
+          // setPosts(postList);
+        }
+      }).catch(err => console.log(err))
+  },[]);
 
   return (
    <div css={community}>
