@@ -4,17 +4,19 @@ import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
 import { Post, Comment } from "../../../types/components/views/BoardProps";
 import ShareButton from "./SocialShare";
-import { ReactComponent as Like } from '../../../assets/like.svg';
 import Comments from "./Comments";
 import Reply from "./Reply";
 import NewReply from "./AddReply";
+import Heart from "./Like";
 
 const Feed:React.FC<Post> = ({feed}:Post) => {
 
     const [showCmts, setShowCmts] = useState<boolean>(false);
     const [reply, setReply] = useState<Comment>();
+    const [likes, setLikes] = useState<number>(0);
 
     useEffect(() => {
+        setLikes(feed.likes);
         const data:Comment = {
             id: 'add',
             writer: '',
@@ -39,7 +41,8 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
                     </div>
                     <Icons>
                         <Comments cnt={feed.comments.length - 1} showCmts={showCmts} setShowCmts={setShowCmts}/>
-                        <Like />
+                        {/* <Like /> */}
+                        <Heart likes={likes} setLikes={setLikes}/>
                         <ShareButton />
                     </Icons>
                 </CardPadding>
