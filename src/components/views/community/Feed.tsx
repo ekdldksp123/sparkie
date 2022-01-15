@@ -124,21 +124,19 @@ const Title = styled.p`
 
 const Content = styled.div`
     width: 100%;
-    max-height: 65% !important;
+    max-height: 78% !important;
     overflow-y: auto; 
     font-size: 1.35em;
     color: #6C6B6B;
     &::-webkit-scrollbar {
-        width:6px;
+        width: 8px;
     }
     &::-webkit-scrollbar-thumb {
-        height: 17%;
-        background-color: #E8E8E8;
+        height: 25%;
+        background-color: #D5F591;
         border-radius: 10px; 
-    }
-    &::-webkit-scrollbar-track {
-        background-color: #C4C4C4;
-        opacity: 0.5 !important;
+        box-shadow: -1px 5px 5px #aaaaaa;
+        #box-shadow: -1px 0px 0px 1px rgba(0,0,0,0.1);
     }
 `;
 

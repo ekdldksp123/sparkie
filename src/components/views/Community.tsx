@@ -95,11 +95,21 @@ const loading = css`
 
 const calendar = css`
   flex-basis: 40%;
-  height: 100%;   
+  height: calc(100vh - 5vh - 30px);
 `;
 
 const board = css`
   flex-basis: 60%;
-  height: 100%;         
-  overflow-y: scroll; 
+  height: calc(100vh - 5vh - 30px);
+  overflow-y: auto;
+  
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+  &::-webkit-scrollbar-thumb {
+    height: 15%;
+    background-color: #E8E8E8;
+    border-radius: 10px; 
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+  }
 `;

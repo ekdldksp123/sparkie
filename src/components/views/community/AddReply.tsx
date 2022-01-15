@@ -134,7 +134,7 @@ const Input = styled.input`
 
 const TextArea = styled.textarea`
     width: 95% !important;
-    height: 20px;
+    height: 22px;
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
