@@ -26,7 +26,8 @@ const reply = css`
     position: relative;   
     margin: 0 auto;
     width: 95%;
-    height: 10%;
+    height: 100px;
+    max-height: 120px;
     background-color: #fff;
     margin-top: 10px;
     box-shadow: 2px 4px 8px 2px rgba(0,0,0,0.2);

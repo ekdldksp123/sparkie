@@ -36,32 +36,30 @@ const Day: React.FC<DayProps> = ({ date, year, day, idx, selectedDate, setSelect
         }
     }
 
-    const renderByStateCase = () => {
-        if(isToday) {
-            return <Today>today</Today>;
-        } else if(isSelected && !isToday) {
-            return <Selected>selected</Selected>;
+    const renderDayByIndex = () => {
+        if(idx === 0 || idx === 6 || holidays.includes(date)) {
+            return <Holiday isSelected={isSelected}>{ day !== 0 ? day : '' }</Holiday>;
+        } else {
+            return <Commonday isSelected={isSelected}>{ day !== 0 ? day : '' }</Commonday>;
         }
     }
 
     return(
         <div key={date} onClick={() => onSelected()} >
-            <span css={(idx === 0 || idx === 6 || holidays.includes(date)) ? holiday : commonday}>
-                { day !== 0 ? day : '' }
-            </span>
-            {renderByStateCase()}
+            {renderDayByIndex()}
+            {isToday && <Today>today</Today>}
         </div> 
     );
 }
 
 export default Day;
 
-const commonday = css`
-    color: #7C7C7C;
+const Commonday = styled.span`
+    color: ${({isSelected} : {isSelected:boolean}) => (isSelected ? '#292929' : '#7C7C7C')};
 `;
 
-const holiday = css`
-    color: #CE879F;
+const Holiday = styled.span`
+    color: ${({isSelected} : {isSelected:boolean}) => (isSelected ? '#BA0F49' : '#CE879F')}
 `;
 
 const Today = styled.button`
