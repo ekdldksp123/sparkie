@@ -15,11 +15,9 @@ const Calendar: React.FC<Props> = (props: Props) => {
   const [selectedDate, setSelectedDate] = useState<string>('');
 
   useEffect(() => {
-    console.log(`year: ${props.year} month: ${props.month}`);
     setYear(props.year);
     setMonth(props.month);
     init(year, month);
-    console.log(dateSet);
   }, []);
 
   useEffect(() => {
@@ -188,7 +186,7 @@ const Weekday = styled.div`
 
 const Row = styled.div`
   width: 100%;
-  height: 16%;
+  height: 12%;
   display: flex;
   justify-content: space-between;
   padding: 10px 0 10px 0;

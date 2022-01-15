@@ -16,8 +16,8 @@ type ModalProps = {
 const ShareModal:React.FC<ModalProps> = ({ visible, setVisible }:ModalProps) => {
     //popup시 scroll 동작 막기(web, mobile 모두)
     useEffect(() => {
-        document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`
-    }, []);
+        if(visible) document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`
+    }, [visible]);
 
     return <Portal elementId='popup-root' child={<Modal visible={visible} setVisible={setVisible}/>}/>;
 }

@@ -6,7 +6,7 @@ import { Comment } from "../../../types/components/views/BoardProps";
 import { ReactComponent as P1 } from '../../../assets/boy.svg';
 import { ReactComponent as P2 } from '../../../assets/girl.svg';
 
-const Reply:React.FC<Comment> = ({writer, date, profile, content }:Comment) => {
+const Reply:React.FC<Comment> = ({id, writer, date, profile, content }:Comment) => {
     return (
         <div css={reply}>
             <ReplyPadding>
