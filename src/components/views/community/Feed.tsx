@@ -136,7 +136,6 @@ const Content = styled.div`
         background-color: #D5F591;
         border-radius: 10px; 
         box-shadow: -1px 5px 5px #aaaaaa;
-        #box-shadow: -1px 0px 0px 1px rgba(0,0,0,0.1);
     }
 `;
 
