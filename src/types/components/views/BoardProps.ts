@@ -7,7 +7,7 @@ export interface Post {
 };
 
 export interface PostData {
-    key: string,
+    id: string,
     title: string,
     date: string,
     writer: string,
@@ -17,6 +17,7 @@ export interface PostData {
 }
 
 export type Comment = {
+    id: string,
     writer: string,
     date: string,
     profile: any,

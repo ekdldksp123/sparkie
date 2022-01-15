@@ -1,4 +1,6 @@
-import React, { useRef, useState } from "react";
+/** @jsxImportSource @emotion/react */
+import { css, keyframes } from "@emotion/react";
+import { useEffect } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,6 +21,21 @@ SwiperCore.use([EffectCoverflow,Pagination, Navigation]);
 
 
 export default function App() {  
+
+  useEffect(() => {
+    document.styleSheets[0].insertRule('#app { height: 100% }');
+    document.styleSheets[0].insertRule('html,body { position: relative; height: 100%; }');
+
+    document.body.style.cssText = `
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    `;
+  },[]);
+
   return (
     <>
     <Swiper effect={'coverflow'} grabCursor={true} centeredSlides={true} slidesPerView={'auto'} loop={true} loopFillGroupWithBlank={true} coverflowEffect={{
@@ -37,3 +54,4 @@ export default function App() {
     </>
   )
 }
+

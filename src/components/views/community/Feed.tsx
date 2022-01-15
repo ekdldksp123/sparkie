@@ -16,6 +16,7 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
 
     useEffect(() => {
         const data:Comment = {
+            id: 'add',
             writer: '',
             date: '',
             profile: '',
@@ -26,37 +27,46 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
     },[feed]);
 
     return (
-        <>
-        <Card>
-            <CardPadding>
-                <div css={writtenDate}>
-                    <span>{feed.date}</span>
-                </div>
-                <Title id="title">{feed.title}</Title>
-                <Content>{feed.content}</Content>
-                <Icons>
-                    <Comments cnt={feed.comments.length - 1} showCmts={showCmts} setShowCmts={setShowCmts}/>
-                    <Like />
-                    <ShareButton />
-                </Icons>
-            </CardPadding>
-        </Card>
-        {showCmts && feed.comments.map((reply:Comment, idx:number) => {
-            if(reply.writer !== '') return <Reply key={idx} writer={reply.writer} date={reply.date} profile={reply.profile} content={reply.content}/>
-            else return <NewReply key={idx} />
-        })}
-        </>
+        <Container>
+            <Card>
+                <CardPadding>
+                    <div css={contents}>
+                        <div css={writtenDate}>
+                            <span>{feed.date}</span>
+                        </div>
+                        <Title id="title">{feed.title}</Title>
+                        <Content>{feed.content}</Content>
+                    </div>
+                    <Icons>
+                        <Comments cnt={feed.comments.length - 1} showCmts={showCmts} setShowCmts={setShowCmts}/>
+                        <Like />
+                        <ShareButton />
+                    </Icons>
+                </CardPadding>
+            </Card>
+            {showCmts && feed.comments.map((reply:Comment, idx:number) => {
+                if(reply.writer !== '') return <Reply key={idx} id ={reply.id} writer={reply.writer} date={reply.date} profile={reply.profile} content={reply.content}/>
+                else return <NewReply key={idx} />
+            })}
+        </Container>
     );
 }
 
 export default Feed;
+
+const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 50%;
+`;
     
 const Card = styled.div`
     position: relative;
     display: flex;   
     margin: 0 auto;
     width: 95%;
-    min-height: 50%;
+    height: inherit;
     background-color: #fff;
     margin-top: 10px;
     box-shadow: 2px 4px 8px 2px rgba(0,0,0,0.2);
@@ -70,9 +80,13 @@ const Card = styled.div`
 const CardPadding = styled.div`
     display: flex;
     flex-direction: column;
-    width: inherit;
-    height: inherit;
     padding: 20px 20px 20px 20px;
+`;
+
+const contents = css`
+    display: flex;
+    flex-direction: column;
+    height: 85%;
 `;
 
 const writtenDate = css`
@@ -110,7 +124,7 @@ const Title = styled.p`
 
 const Content = styled.div`
     width: 100%;
-    flex-basis: 65% !important;
+    max-height: 65% !important;
     overflow-y: auto; 
     font-size: 1.35em;
     color: #6C6B6B;
@@ -130,6 +144,7 @@ const Content = styled.div`
 
 const Icons = styled.div`
     position: absolute;
+    #padding-top: 20px !important;
     bottom: 20px;
     display: flex;
     flex-direction: row;
@@ -147,13 +162,3 @@ const Icons = styled.div`
     }
 `;
 
-const cmt = css`
-    align-self: flex-end;
-    height: 40px !important;
-    width: auto;
-
-    transition: transform .2s;
-    &:hover {
-        transform: scale(1.7);
-    }
-`;

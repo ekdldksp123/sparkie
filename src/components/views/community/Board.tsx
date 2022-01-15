@@ -24,5 +24,17 @@ const container = css`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 100%;
+    max-height: 100%;
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+    &::-webkit-scrollbar-thumb {
+        height: 17%;
+        background-color: #E8E8E8;
+        border-radius: 10px; 
+    }
+    &::-webkit-scrollbar-track {
+        #background-color: #C4C4C4;
+        #opacity: 0.5 !important;
+    }
 `;
