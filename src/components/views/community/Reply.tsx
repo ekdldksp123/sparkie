@@ -27,7 +27,6 @@ const reply = css`
     margin: 0 auto;
     width: 95%;
     height: 100px;
-    max-height: 120px;
     background-color: #fff;
     margin-top: 10px;
     box-shadow: 2px 4px 8px 2px rgba(0,0,0,0.2);
@@ -46,18 +45,14 @@ const reply = css`
         height: 17%;
         background-color: #E8E8E8;
         border-radius: 10px; 
-    }
-    &::-webkit-scrollbar-track {
-        background-color: #C4C4C4;
-        opacity: 0.5 !important;
-    }
-    
+    }    
 `;
 
 const ReplyPadding = styled.div`
     display: flex;
     flex-direction: row;
-    padding: 10px 10px 10px 10px;
+    height: 100% - 8px;
+    padding: 8px 10px 8px 10px;
 `;
 
 const Profile = styled.div`
@@ -79,12 +74,11 @@ const right_side = css`
     align-self: flex-end;    
     display: flex;
     flex-direction: column;
-
-    
+    align-content: space-between;
 `;
 
 const Writer = styled.h3`
-    padding-bottom: 5px;
+    padding: 0 0 5px 0;
 `;
 
 const ReplyContent = styled.div`
@@ -92,8 +86,6 @@ const ReplyContent = styled.div`
     flex-basis: 50% !important;
     font-size: 1em;
     color: #6C6B6B;
-
-
 `;
 
 

@@ -12,7 +12,7 @@ const Board:React.FC<Posts> = ({posts}:Posts) => {
             { posts.length != 0 &&
               posts.map((post:Post, idx:number) => {
                 return (
-                  <Row>
+                  <Row key={idx}>
                     <Feed key={idx} feed={post.feed}/>
                   </Row>
                 );
