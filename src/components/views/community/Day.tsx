@@ -71,11 +71,3 @@ const Today = styled.button`
     color: #fff;
 `;
 
-const Selected = styled.button`
-    background: #8FE388;
-    border-radius: 4px;
-    outline: 0;
-    border:none;
-    align-self: center;
-    color: #fff;
-`;
