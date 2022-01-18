@@ -1,7 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
+import { useState } from "react";
 import { ReactComponent as Like } from '../../../assets/like.svg';
+import { ReactComponent as NoLike } from '../../../assets/nolike.svg';
 
 interface Likes {
     likes: number,
@@ -9,11 +11,23 @@ interface Likes {
 }
 
 const Heart:React.FC<Likes> = ({likes, setLikes}: Likes) => {
+    const [isClicked, setIsClicked] = useState<boolean>(false);
+
+    const setClickedAndLikes = () => {
+        setIsClicked(!isClicked);
+        if(isClicked) setLikes(likes ++);
+        else setLikes(likes --);
+    }
+
     return (
         <>
-            <Like css={heart} onClick={() => setLikes(likes++)}>
-                
-            </Like> 
+            {isClicked 
+                ? 
+                <Like css={heart} onClick={() => setClickedAndLikes()}></Like> 
+                :
+                <NoLike css={heart} onClick={() => setClickedAndLikes()}></NoLike> 
+            }
+            {/* <Like css={heart} onClick={() => setClickedAndLikes()}></Like>  */}
             <Counter>{likes}</Counter>
         </>
     );
@@ -21,29 +35,10 @@ const Heart:React.FC<Likes> = ({likes, setLikes}: Likes) => {
 
 export default Heart;
 
-const beating = keyframes`
-    from {
-        top: 0px
-    }
-
-    to {
-        top: -48px
-    }
-`;
-
-// const Container = styled.div`
-//     & hover .counter {
-//         animation: ${beating} 1s forwards;
-//         -webkit-animation: ${beating} 1s forwards;
-//         -moz-animation: ${beating} 1s forwards;
-//         -o-animation: ${beating} 1s forwards;
-//         z-index: 1;
-//     }
-// `
 
 const heart = css`
     align-self: flex-end;
-    height: 40px !important;
+    height: 45px !important;
     width: auto;
 
     transition: transform .2s;
@@ -52,27 +47,27 @@ const heart = css`
     }
 `;
 
-const counter = css`
-    position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: #fff;
-    border-radius: 10px;
-    z-index: -1;
-    font-size: 16px;
-    height: 40px;
-    width: 40px;
-    background-color: #FB076D;
+// const counter = css`
+//     position: absolute;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     color: #fff;
+//     border-radius: 10px;
+//     z-index: -1;
+//     font-size: 16px;
+//     height: 40px;
+//     width: 40px;
+//     background-color: #FB076D;
 
-    &:hover {
-        animation: ${beating} 1s forwards;
-        -webkit-animation: ${beating} 1s forwards;
-        -moz-animation: ${beating} 1s forwards;
-        -o-animation: ${beating} 1s forwards;
-        z-index: 1;
-    }
-`;
+//     &:hover {
+//         animation: ${beating} 1s forwards;
+//         -webkit-animation: ${beating} 1s forwards;
+//         -moz-animation: ${beating} 1s forwards;
+//         -o-animation: ${beating} 1s forwards;
+//         z-index: 1;
+//     }
+// `;
 
 const Counter = styled.button`
     background: #FEC5E5;
