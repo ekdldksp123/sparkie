@@ -1,7 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ReactComponent as Like } from '../../../assets/like.svg';
 import { ReactComponent as NoLike } from '../../../assets/nolike.svg';
 
@@ -13,21 +13,24 @@ interface Likes {
 const Heart:React.FC<Likes> = ({likes, setLikes}: Likes) => {
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
-    const setClickedAndLikes = () => {
+    useEffect(() => {
+        console.log('useEffect');
+        if(isClicked) setLikes(likes+1);
+        else setLikes(likes-1);
+    },[isClicked]);
+
+    const onClickHandler = () => {
         setIsClicked(!isClicked);
-        if(isClicked) setLikes(likes ++);
-        else setLikes(likes --);
     }
 
     return (
         <>
             {isClicked 
                 ? 
-                <Like css={heart} onClick={() => setClickedAndLikes()}></Like> 
+                <Like css={heart} onClick={() => onClickHandler()}></Like> 
                 :
-                <NoLike css={heart} onClick={() => setClickedAndLikes()}></NoLike> 
+                <NoLike css={heart} onClick={() => onClickHandler()}></NoLike> 
             }
-            {/* <Like css={heart} onClick={() => setClickedAndLikes()}></Like>  */}
             <Counter>{likes}</Counter>
         </>
     );
