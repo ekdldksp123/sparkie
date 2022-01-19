@@ -78,12 +78,10 @@ const Calendar: React.FC<Props> = (props: Props) => {
                 return <div key={value}>{value}</div>;
               })}
             </Weekday>
-            {dateSet.length !== 0 &&
-            dateSet.map((days: number[], index: number) => {
+            {dateSet.length !== 0 && dateSet.map((days: number[], index: number) => {
               return (
                 <Row key={index}>
-                  {days.length !== 0 &&
-                  days.map((day: number, idx: number) => {
+                  {days.length !== 0 && days.map((day: number, idx: number) => {
                     let date: string;
                     if (day !== 0) {
                       date = `${leftPad(month + 1)}-${leftPad(day)}`;
