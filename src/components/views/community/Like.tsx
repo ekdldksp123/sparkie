@@ -14,7 +14,6 @@ const Heart:React.FC<Likes> = ({likes, setLikes}: Likes) => {
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
     useEffect(() => {
-        console.log('useEffect');
         if(isClicked) setLikes(likes+1);
         else setLikes(likes-1);
     },[isClicked]);
@@ -49,28 +48,6 @@ const heart = css`
         transform: scale(1.7);
     }
 `;
-
-// const counter = css`
-//     position: absolute;
-//     display: flex;
-//     justify-content: center;
-//     align-items: center;
-//     color: #fff;
-//     border-radius: 10px;
-//     z-index: -1;
-//     font-size: 16px;
-//     height: 40px;
-//     width: 40px;
-//     background-color: #FB076D;
-
-//     &:hover {
-//         animation: ${beating} 1s forwards;
-//         -webkit-animation: ${beating} 1s forwards;
-//         -moz-animation: ${beating} 1s forwards;
-//         -o-animation: ${beating} 1s forwards;
-//         z-index: 1;
-//     }
-// `;
 
 const Counter = styled.button`
     background: #FEC5E5;

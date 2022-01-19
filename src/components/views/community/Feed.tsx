@@ -2,12 +2,13 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { Post, Comment } from "../../../types/components/views/BoardProps";
+import { Post, PostData, Comment } from "../../../types/components/views/BoardProps";
 import ShareButton from "./SocialShare";
 import Comments from "./Comments";
 import Reply from "./Reply";
 import NewReply from "./AddReply";
 import Heart from "./Like";
+import { useMutation } from "react-query";
 
 const Feed:React.FC<Post> = ({feed}:Post) => {
 
@@ -27,6 +28,11 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
         feed.comments.push(data);
         setReply(data);
     },[feed]);
+
+    useEffect(() => {
+        
+        //const mutation = useMutation()
+    },[likes]);
 
     return (
         <Container>

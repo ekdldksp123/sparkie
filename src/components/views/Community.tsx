@@ -17,7 +17,7 @@ const props:DateProps = {
 const Community = () => {
   const [posts, setPosts] = useState<Post[]>([]);
 
-  const { isLoading, error, data }: any = useQuery("repoData", async () =>
+  const { isFetching, error, data }: any = useQuery("", async () =>
     await axios.get('api/community')
   );
 
@@ -30,11 +30,12 @@ const Community = () => {
   },[]);
 
   useEffect(() => {
-    if(!isLoading && data) {
+    if(!isFetching && data) {
       console.log(data.data.posts[0]);
       /** post 데이터 세팅하기 */
       const datas = data.data.posts;
       const postDatas:Post[] = [];
+      
       datas.map((data:any) => {
         const postData:PostData = {
           id: data._id,
@@ -64,9 +65,9 @@ const Community = () => {
       });
       setPosts(postDatas);
     }
-  },[isLoading, data]);
+  },[isFetching, data]);
 
-  if(isLoading) return <div css={loading}>loading...</div>;
+  if(isFetching) return <div css={loading}>loading...</div>;
   if(error) return <div>{error.message}</div>;
   
   return (
