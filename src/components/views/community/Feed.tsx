@@ -9,12 +9,18 @@ import Reply from "./Reply";
 import NewReply from "./AddReply";
 import Heart from "./Like";
 import { useMutation } from "react-query";
+import axios from "axios";
 
 const Feed:React.FC<Post> = ({feed}:Post) => {
 
     const [showCmts, setShowCmts] = useState<boolean>(false);
+    const [initData, setInitData] = useState<boolean>(false);
     const [reply, setReply] = useState<Comment>();
     const [likes, setLikes] = useState<number>(0);
+    
+    const mutation = useMutation( async () => {
+        axios.patch(`api/community/post/edit/${feed.id}/${likes}`);
+    })
 
     useEffect(() => {
         setLikes(feed.likes);
@@ -27,11 +33,13 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
         };
         feed.comments.push(data);
         setReply(data);
+        setInitData(true);
     },[feed]);
 
     useEffect(() => {
-        
-        //const mutation = useMutation()
+        if(initData && feed.likes !== likes) {
+            mutation.mutateAsync().then(() => console.log('update number of likes'));
+        }
     },[likes]);
 
     return (
