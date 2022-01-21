@@ -9,12 +9,17 @@ import Reply from "./Reply";
 import NewReply from "./AddReply";
 import Heart from "./Like";
 import { useMutation } from "react-query";
+import axios from "axios";
 
 const Feed:React.FC<Post> = ({feed}:Post) => {
-
+    const [init, setInit] = useState<boolean>(false);
     const [showCmts, setShowCmts] = useState<boolean>(false);
     const [reply, setReply] = useState<Comment>();
-    const [likes, setLikes] = useState<number>(0);
+    const [likes, setLikes] = useState<number | undefined>(undefined);
+    
+    const mutation = useMutation( async () => {
+        axios.patch(`api/community/post/edit/${feed.id}/${likes}`);
+    })
 
     useEffect(() => {
         setLikes(feed.likes);
@@ -27,11 +32,13 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
         };
         feed.comments.push(data);
         setReply(data);
+        setInit(true);
     },[feed]);
 
     useEffect(() => {
-        
-        //const mutation = useMutation()
+        if(likes !== undefined && init) {
+            mutation.mutateAsync().then(() => console.log('update number of likes'));
+        }
     },[likes]);
 
     return (
@@ -48,7 +55,7 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
                     <Icons>
                         <Comments cnt={feed.comments.length - 1} showCmts={showCmts} setShowCmts={setShowCmts}/>
                         {/* <Like /> */}
-                        <Heart likes={likes} setLikes={setLikes}/>
+                        <Heart likes={likes === undefined ? 0 : likes} setLikes={setLikes}/>
                         <ShareButton />
                     </Icons>
                 </CardPadding>
