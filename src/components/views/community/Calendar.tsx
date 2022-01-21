@@ -2,8 +2,8 @@
 import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
-import { weekdays, months } from './CalendarBase';
-import {Props} from '../../../types/components/views/DateProps';
+import { weekdays, months, init } from './CalendarBase';
+import { DateProps as Props } from '../../../types/components/views/DateProps';
 import { NextBtn, PrevBtn } from './CalendarBtn';
 import { leftPad } from '../../../lib/common/DateUtils';
 import Day from './Day';
@@ -15,45 +15,14 @@ const Calendar: React.FC<Props> = (props: Props) => {
   const [selectedDate, setSelectedDate] = useState<string>('');
 
   useEffect(() => {
-    console.log(`year: ${props.year} month: ${props.month}`);
     setYear(props.year);
     setMonth(props.month);
-    init(year, month);
-    console.log(dateSet);
+    setDateSet(init(year, month));
   }, []);
 
   useEffect(() => {
-    init(year, month);
+    setDateSet(init(year, month));
   }, [year, month]);
-
-  const init = (year: number, month: number) => {
-    const start: Date = new Date(year, month, 1);
-    const end: Date = new Date(year, month + 1, 1 - 1);
-
-    let startDayOfWeek: number = start.getDay();
-    let endDayOfWeek: number = end.getDay();
-    let endDate: number = end.getDate();
-
-    let rows: number[][] = [];
-    let days: number[] = [];
-
-    for (let i = 0; i < startDayOfWeek; i++) {
-      days.push(0);
-    }
-    for (let i = 1, j = startDayOfWeek; i <= endDate; i++, j++) {
-      if (j % 7 === 6) {
-        days.push(i);
-        rows.push(days);
-        days = [];
-      } else days.push(i);
-    }
-    for (let i = endDayOfWeek; i < 6; i++) {
-      days.push(0);
-    }
-    rows.push(days);
-
-    setDateSet(rows);
-  };
 
   return (
     <>
@@ -80,12 +49,10 @@ const Calendar: React.FC<Props> = (props: Props) => {
                 return <div key={value}>{value}</div>;
               })}
             </Weekday>
-            {dateSet.length !== 0 &&
-            dateSet.map((days: number[], index: number) => {
+            {dateSet.length !== 0 && dateSet.map((days: number[], index: number) => {
               return (
                 <Row key={index}>
-                  {days.length !== 0 &&
-                  days.map((day: number, idx: number) => {
+                  {days.length !== 0 && days.map((day: number, idx: number) => {
                     let date: string;
                     if (day !== 0) {
                       date = `${leftPad(month + 1)}-${leftPad(day)}`;
@@ -188,7 +155,7 @@ const Weekday = styled.div`
 
 const Row = styled.div`
   width: 100%;
-  height: 16%;
+  height: 12%;
   display: flex;
   justify-content: space-between;
   padding: 10px 0 10px 0;

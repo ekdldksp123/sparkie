@@ -36,7 +36,7 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
     },[feed]);
 
     useEffect(() => {
-        if(likes !== undefined && feed.likes !== likes && init) {
+        if(likes !== undefined && init) {
             mutation.mutateAsync().then(() => console.log('update number of likes'));
         }
     },[likes]);
