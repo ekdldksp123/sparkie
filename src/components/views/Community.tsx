@@ -31,7 +31,6 @@ const Community = () => {
 
   useEffect(() => {
     if(!isFetching && data) {
-      console.log(data.data.posts[0]);
       /** post 데이터 세팅하기 */
       const datas = data.data.posts;
       const postDatas:Post[] = [];
