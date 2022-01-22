@@ -62,7 +62,7 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
             </Card>
             {showCmts && feed.comments.map((reply:Comment, idx:number) => {
                 if(reply.writer !== '') return <Reply key={idx} id ={reply.id} writer={reply.writer} date={reply.date} profile={reply.profile} content={reply.content}/>
-                else return <NewReply key={idx} />
+                else return <NewReply key={idx} postId={feed.id}/>
             })}
         </Container>
     );

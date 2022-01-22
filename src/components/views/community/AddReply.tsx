@@ -4,36 +4,47 @@ import styled from '@emotion/styled';
 import React, { useEffect, useState, useRef } from 'react';
 import { Comment } from "../../../types/components/views/BoardProps";
 import { ReactComponent as Someone } from '../../../assets/who.svg';
+import { useMutation } from "react-query";
+import axios from "axios";
 
 type Reply = {
-    name: '',
-    content: '',
+    post_id: string,
+    writer: string,
+    content: string,
 }
 
-interface RefObject<T> {
-    readonly current: T | null;
+type NewReplyProps = {
+    postId: string,
 }
 
-const NewReply = ():JSX.Element => {
+const NewReply:React.FC<NewReplyProps> = ({postId} : NewReplyProps):JSX.Element => {
 
     const nameRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLTextAreaElement>(null);
 
     const [comment, setComment] = useState<Reply>({
-        name: '',
+        post_id: postId,
+        writer: '',
         content: '',
     });
+
+    const mutation = useMutation( async (data:Reply) => {
+        axios.patch('api/community/post/comment', JSON.stringify(data));
+    })
 
     const onChangeHandler = (e: React.ChangeEvent<any>) => {
         const {name, value} = e.target;
         setComment({...comment, [name]: value});
     }
 
-
     const onSubmit = () => {
-        if(comment.name === '') nameRef.current?.focus();
+        if(comment.writer === '') nameRef.current?.focus();
         else if(comment.content === '') contentRef.current?.focus();
-        else console.log(comment);
+        else {
+            console.log('submit');
+            mutation.mutateAsync(comment).then(() => console.log('add comment'));
+            setComment({...comment, writer: '', content: ''});
+        }
     }
 
     return (
