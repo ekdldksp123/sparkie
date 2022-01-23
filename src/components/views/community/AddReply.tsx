@@ -29,7 +29,7 @@ const NewReply:React.FC<NewReplyProps> = ({postId} : NewReplyProps):JSX.Element 
     });
 
     const mutation = useMutation( async (data:Reply) => {
-        axios.patch('api/community/post/comment', JSON.stringify(data));
+        axios.patch('api/community/post/comment', { post_id: data.post_id, writer: data.writer, content: data.content });
     })
 
     const onChangeHandler = (e: React.ChangeEvent<any>) => {
@@ -38,10 +38,11 @@ const NewReply:React.FC<NewReplyProps> = ({postId} : NewReplyProps):JSX.Element 
     }
 
     const onSubmit = () => {
+        console.log('submit');
         if(comment.writer === '') nameRef.current?.focus();
         else if(comment.content === '') contentRef.current?.focus();
         else {
-            console.log('submit');
+            console.log(JSON.stringify(comment));
             mutation.mutateAsync(comment).then(() => console.log('add comment'));
             setComment({...comment, writer: '', content: ''});
         }
@@ -53,7 +54,7 @@ const NewReply:React.FC<NewReplyProps> = ({postId} : NewReplyProps):JSX.Element 
                 <Profile><Someone/></Profile>
                 <div css={right_side}>
                     <Writer>
-                        <Input ref={nameRef} name="name" placeholder="Name / Nickname" onChange={(e) => onChangeHandler(e)}/>
+                        <Input ref={nameRef} name="writer" placeholder="Name / Nickname" onChange={(e) => onChangeHandler(e)}/>
                     </Writer>
                     <ReplyContent>
                         <TextArea ref={contentRef} name="content" onChange={(e) => onChangeHandler(e)} placeholder="Share your thoughts" autoComplete="off" role="textbox" aria-autocomplete="list" aria-haspopup="true"/>
