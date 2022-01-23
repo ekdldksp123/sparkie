@@ -54,7 +54,6 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
                     </div>
                     <Icons>
                         <Comments cnt={feed.comments.length - 1} showCmts={showCmts} setShowCmts={setShowCmts}/>
-                        {/* <Like /> */}
                         <Heart likes={likes === undefined ? 0 : likes} setLikes={setLikes}/>
                         <ShareButton />
                     </Icons>
@@ -89,7 +88,7 @@ const Card = styled.div`
     border-radius: 8px;
     transition: 0.3s;
     &:hover {
-        box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+        box-shadow: 0 8px 20px 0 rgba(0,0,0,0.2);
     }
 `;
 
