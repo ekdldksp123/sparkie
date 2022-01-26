@@ -2,7 +2,7 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { Posts, Post } from "../../../types/components/views/BoardProps";
+import { Posts, Post } from "../../../types/components/views/community/BoardProps";
 import Feed from "./Feed";
 
 const Board:React.FC<Posts> = ({posts}:Posts) => {

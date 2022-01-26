@@ -2,10 +2,10 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { Post, Comment } from "../../../types/components/views/BoardProps";
+import { Post, Comment } from "../../../types/components/views/community/BoardProps";
 import ShareButton from "./SocialShare";
 import { ReactComponent as Cmt } from '../../../assets/comment.svg';
-import { CommentProps } from "../../../types/components/views/CounterProps";
+import { CommentProps } from "../../../types/components/views/community/CounterProps";
 
 const Comments:React.FC<CommentProps> = ({cnt, showCmts, setShowCmts}:CommentProps) => {
     const [count, setCount] = useState<number>(0);

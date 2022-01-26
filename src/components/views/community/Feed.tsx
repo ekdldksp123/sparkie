@@ -2,20 +2,29 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import { useEffect, useState } from 'react';
-import { Post, PostData, Comment } from "../../../types/components/views/BoardProps";
+import { Post, PostData, Comment } from "../../../types/components/views/community/BoardProps";
 import ShareButton from "./SocialShare";
-import Comments from "./Comments";
+import Comments from "./CommentBtn";
 import Reply from "./Reply";
 import NewReply from "./AddReply";
-import Heart from "./Like";
+import Heart from "./LikeBtn";
 import { useMutation } from "react-query";
 import axios from "axios";
+import { useSelector, useDispatch } from 'react-redux';
+import { RootState } from "../../../types/store/commentReducer";
+import { revealCmt, hideCmt } from "../../../types/store/actions/commentActions";
+
 
 const Feed:React.FC<Post> = ({feed}:Post) => {
     const [init, setInit] = useState<boolean>(false);
-    const [showCmts, setShowCmts] = useState<boolean>(false);
+    // const [showCmts, setShowCmts] = useState<boolean>(false);
     const [reply, setReply] = useState<Comment>();
     const [likes, setLikes] = useState<number | undefined>(undefined);
+    const showCmts = useSelector((state:RootState) => state.reducer.show);
+    const dispatch = useDispatch();
+
+    const revealComments = () => { dispatch(revealCmt) };
+    const hideComments = () => { dispatch(hideCmt) }; 
     
     const mutation = useMutation( async () => {
         axios.patch(`api/community/post/edit/${feed.id}/${likes}`);
@@ -53,7 +62,7 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
                         <Content>{feed.content}</Content>
                     </div>
                     <Icons>
-                        <Comments cnt={feed.comments.length - 1} showCmts={showCmts} setShowCmts={setShowCmts}/>
+                        <Comments cnt={feed.comments.length - 1} showCmts={showCmts} setShowCmts={}/>
                         <Heart likes={likes === undefined ? 0 : likes} setLikes={setLikes}/>
                         <ShareButton />
                     </Icons>

@@ -3,7 +3,7 @@ import { css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import { weekdays, months, init } from './CalendarBase';
-import { DateProps as Props } from '../../../types/components/views/DateProps';
+import { DateProps as Props } from '../../../types/components/views/community/DateProps';
 import { NextBtn, PrevBtn } from './CalendarBtn';
 import { leftPad } from '../../../lib/common/DateUtils';
 import Day from './Day';
