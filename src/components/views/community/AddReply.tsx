@@ -2,7 +2,7 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import React, { useEffect, useState, useRef } from 'react';
-import { Comment } from "../../../types/components/views/BoardProps";
+import { Comment } from "../../../types/components/views/community/BoardProps";
 import { ReactComponent as Someone } from '../../../assets/who.svg';
 import { useMutation } from "react-query";
 import axios from "axios";
@@ -43,7 +43,9 @@ const NewReply:React.FC<NewReplyProps> = ({postId} : NewReplyProps):JSX.Element 
         else if(comment.content === '') contentRef.current?.focus();
         else {
             console.log(JSON.stringify(comment));
-            mutation.mutateAsync(comment).then(() => console.log('add comment'));
+            mutation.mutateAsync(comment).then(() => {
+                window.location.reload();
+            });
             setComment({...comment, writer: '', content: ''});
         }
     }

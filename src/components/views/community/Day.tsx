@@ -3,7 +3,7 @@ import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 import React, { useEffect, useState } from 'react';
 import { holidays } from "./CalendarBase";
-import { DateProps } from '../../../types/components/views/DateProps';
+import { DateProps } from '../../../types/components/views/community/DateProps';
 import { formatDateToString } from "../../../lib/common/DateUtils";
 
 interface DayProps extends DateProps {
