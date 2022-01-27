@@ -4,5 +4,6 @@ export interface Counter {
 
 export interface CommentProps extends Counter {
     showCmts: boolean,
-    setShowCmts: (value:boolean) => void,
+    revealCmts: () => void,
+    hideCmts: () => void,
 }

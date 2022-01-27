@@ -17,7 +17,7 @@ type NewReplyProps = {
     postId: string,
 }
 
-const NewReply:React.FC<NewReplyProps> = ({postId} : NewReplyProps):JSX.Element => {
+const NewReply:React.FC<NewReplyProps> = ({postId}):JSX.Element => {
 
     const nameRef = useRef<HTMLInputElement>(null);
     const contentRef = useRef<HTMLTextAreaElement>(null);
@@ -44,7 +44,7 @@ const NewReply:React.FC<NewReplyProps> = ({postId} : NewReplyProps):JSX.Element 
         else {
             console.log(JSON.stringify(comment));
             mutation.mutateAsync(comment).then(() => {
-                window.location.reload();
+                console.log('add comment')
             });
             setComment({...comment, writer: '', content: ''});
         }

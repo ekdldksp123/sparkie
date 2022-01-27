@@ -5,48 +5,41 @@ import { useEffect, useState } from 'react';
 import { Post, PostData, Comment } from "../../../types/components/views/community/BoardProps";
 import ShareButton from "./SocialShare";
 import Comments from "./CommentBtn";
-import Reply from "./Reply";
-import NewReply from "./AddReply";
 import Heart from "./LikeBtn";
 import { useMutation } from "react-query";
 import axios from "axios";
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector, useDispatch, useStore } from 'react-redux';
 import { RootState } from "../../../types/store/commentReducer";
 import { revealCmt, hideCmt } from "../../../types/store/actions/commentActions";
+import CommentList from "./Comments";
 
 
 const Feed:React.FC<Post> = ({feed}:Post) => {
     const [init, setInit] = useState<boolean>(false);
-    // const [showCmts, setShowCmts] = useState<boolean>(false);
-    const [reply, setReply] = useState<Comment>();
     const [likes, setLikes] = useState<number | undefined>(undefined);
+    
+    // comment visibility에 redux 적용하기
     const showCmts = useSelector((state:RootState) => state.reducer.show);
     const dispatch = useDispatch();
-
-    const revealComments = () => { dispatch(revealCmt) };
-    const hideComments = () => { dispatch(hideCmt) }; 
+    const revealComments = () => { dispatch(revealCmt()) };
+    const hideComments = () => { dispatch(hideCmt()) }; 
     
     const mutation = useMutation( async () => {
         axios.patch(`api/community/post/edit/${feed.id}/${likes}`);
     })
 
     useEffect(() => {
+        console.log(showCmts);      
+    },[showCmts]);
+
+    useEffect(() => {
         setLikes(feed.likes);
-        const data:Comment = {
-            id: 'add',
-            writer: '',
-            date: '',
-            profile: '',
-            content: '',
-        };
-        feed.comments.push(data);
-        setReply(data);
         setInit(true);
     },[feed]);
 
     useEffect(() => {
         if(likes !== undefined && init) {
-            mutation.mutateAsync().then(() => console.log('update number of likes'));
+            mutation.mutateAsync();
         }
     },[likes]);
 
@@ -62,16 +55,13 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
                         <Content>{feed.content}</Content>
                     </div>
                     <Icons>
-                        <Comments cnt={feed.comments.length - 1} showCmts={showCmts} setShowCmts={}/>
+                        <Comments cnt={feed.comments.length} showCmts={showCmts} revealCmts={revealComments} hideCmts={hideComments}/>
                         <Heart likes={likes === undefined ? 0 : likes} setLikes={setLikes}/>
                         <ShareButton />
                     </Icons>
                 </CardPadding>
             </Card>
-            {showCmts && feed.comments.map((reply:Comment, idx:number) => {
-                if(reply.writer !== '') return <Reply key={idx} id ={reply.id} writer={reply.writer} date={reply.date} profile={reply.profile} content={reply.content}/>
-                else return <NewReply key={idx} postId={feed.id}/>
-            })}
+            <CommentList toggle={showCmts} id={feed.id} comments={feed.comments}/>
         </Container>
     );
 }
