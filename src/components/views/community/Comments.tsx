@@ -1,7 +1,4 @@
-/** @jsxImportSource @emotion/react */
-import { css, keyframes } from "@emotion/react";
-import styled from '@emotion/styled';
-import { useEffect, useState } from 'react';
+import React from 'react';
 import { Comment } from "../../../types/components/views/community/BoardProps";
 import Reply from "./Reply";
 import NewReply from "./AddReply";
@@ -12,10 +9,8 @@ interface CommentProps {
     comments: Comment[],
 }
 
-const CommentList:React.FC<CommentProps> = ({ comments, id, toggle }) => {
-
-    useEffect(() => {}, [comments.length]);
-    
+const CommentList:React.FC<CommentProps> = React.memo(props => {
+    const { comments, id, toggle } = props;
     if(toggle && comments.length > 0) {
         return (
             <>
@@ -26,6 +21,7 @@ const CommentList:React.FC<CommentProps> = ({ comments, id, toggle }) => {
             </>
         );
     } else return (<></>);
-}
+}, (prevProps, nextProps) => prevProps.comments.length === nextProps.comments.length);
 
 export default CommentList;
+// export default React.memo(CommentList, (prevProps, nextProps) => { prevProps.comments.length === nextProps.comments.length});
