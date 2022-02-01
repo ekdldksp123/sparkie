@@ -16,28 +16,34 @@ const Intro = () => {
     },[]);
 
   return (
-    <>
+    <Container>
       <Gif>
         <img src={tesla} css={car} alt="init"/>
       </Gif>
-      <Container>
+      <Wrapper>
         <Bulb/>
         <AnimatedText/>
-        {/* <RightArrow/> */}
-      </Container>
-    </>
+      </Wrapper>
+    </Container>
   );
 }
 
 export default Intro;
 
 const Gif = styled.div`
-  width: 100vw;
-  height: 70vh;
+  width: 50vw;
+  height: 100vh;
+  float: left;
 `;
 
 const Container = styled.div`
   display: flex;
+`;
+
+const Wrapper = styled.div`
+  width: 50vw;
+  display: flex;
+  align-self: center;
 `;
 
 const car = css`
