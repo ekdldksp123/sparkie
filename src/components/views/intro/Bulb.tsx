@@ -46,7 +46,10 @@ const lightOn = keyframes`
     100% { fill: #ffed8c; opacity: 0.8; }
 `;
 
-const Wrapper = styled.div`padding: 30px 30px 30px 30px;`;
+const Wrapper = styled.div`
+    margin: 0 auto;
+    #padding: 15px 50px 0px 50px;
+`;
 
 const LightBulb = styled.svg`width: 125px;`;
 
