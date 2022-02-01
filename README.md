@@ -115,6 +115,10 @@
 - intro 화면 추가
 - text drawing animation 추가
 
+### _2022.01.31 (화)_
+- intro 화면에 bulb 및 css 효과 추가
+- 화살표 애니메이션 구현 중 
+
 ## 태양
 ---
 ### [지도 관련]
