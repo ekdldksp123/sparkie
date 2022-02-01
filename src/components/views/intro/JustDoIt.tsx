@@ -1,16 +1,9 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
-import { useEffect } from "react";
-import { useNavigate } from 'react-router';
 
 const AnimatedText = () => {
-    const navigate = useNavigate();
     
-    useEffect(() => {
-        setTimeout(() => navigate('/main'), 7000);
-    },[]);
-
     return (
         <Wrapper>
             <Just width="345" height="162" viewBox="0 0 345 162" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -76,9 +69,9 @@ const Doit = styled.svg`
     stroke-dasharray: 3186;
     animation-name: ${write}, ${blink};
     animation-duration: 1500ms, 1000ms;
-    animation-delay: 3500ms, 5000ms !important; 
+    animation-delay: 3000ms, 5000ms !important; 
     animation-iteration-count: 1, infinite !important;
-    animation-timing-function: ease-in, step-end !important;
+    animation-timing-function: ease-in-out, step-end !important;
 `
 
 

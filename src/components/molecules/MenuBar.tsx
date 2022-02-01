@@ -48,12 +48,13 @@ const nav = css`
 `;
 
 const burger = css`
+  width: 50px;
+  margin-left: 25px;
   & div {
     background-color: white;
     width: 45px;
     height: 5px;
     margin: 5px;
-    margin-left: 25px;
     transition: all 0.5s;
   }
 `;
