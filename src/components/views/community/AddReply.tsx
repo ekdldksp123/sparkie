@@ -1,8 +1,7 @@
 /** @jsxImportSource @emotion/react */
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
-import React, { useEffect, useState, useRef } from 'react';
-import { Comment } from "../../../types/components/views/community/BoardProps";
+import React, { useState, useRef } from 'react';
 import { ReactComponent as Someone } from '../../../assets/who.svg';
 import { useMutation } from "react-query";
 import axios from "axios";

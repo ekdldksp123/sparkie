@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import { Comment } from "../../../types/components/views/community/BoardProps";
 import { ReactComponent as P1 } from '../../../assets/boy.svg';
 
-const Reply:React.FC<Comment> = ({id, writer, date, profile, content }:Comment) => {
+const Reply:React.FC<Comment> = ({ id, writer, date, profile, content }) => {
 
     return (
         <div css={reply}>

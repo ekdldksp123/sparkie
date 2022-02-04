@@ -13,7 +13,7 @@ type ModalProps = {
     setVisible:(value:boolean) => void;
 }
 
-const ShareModal:React.FC<ModalProps> = ({ visible, setVisible }:ModalProps) => {
+const ShareModal:React.FC<ModalProps> = ({ visible, setVisible }) => {
     //popup시 scroll 동작 막기(web, mobile 모두)
     useEffect(() => {
         if(visible) document.body.style.cssText = `position: fixed; top: -${window.scrollY}px`
@@ -22,7 +22,7 @@ const ShareModal:React.FC<ModalProps> = ({ visible, setVisible }:ModalProps) => 
     return <Portal elementId='popup-root' child={<Modal visible={visible} setVisible={setVisible}/>}/>;
 }
 
-const Modal:React.FC<ModalProps> = ({visible, setVisible}:ModalProps) => {
+const Modal:React.FC<ModalProps> = ({ visible, setVisible }) => {
     const currentUrl = window.location.href as string;
     const status = useScript("https://developers.kakao.com/sdk/js/kakao.js");
     

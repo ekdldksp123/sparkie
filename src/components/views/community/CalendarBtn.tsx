@@ -3,22 +3,22 @@ import { css } from "@emotion/react";
 import { ReactComponent as Arrow } from '../../../assets/next.svg';
 import { ClickEventProps } from '../../../types/components/views/community/DateProps';
 
-export const NextBtn:React.FC<ClickEventProps> = (props) => {
+export const NextBtn:React.FC<ClickEventProps> = ({month, year, setMonth, setYear}) => {
     const onNextClickEventHandler = () => {
-        if(props.month === 11) {
-            props.setYear(props.year + 1);
-            props.setMonth(0);
-        } else props.setMonth(props.month + 1);
+        if(month === 11) {
+            setYear(year + 1);
+            setMonth(0);
+        } else setMonth(month + 1);
     }
     return <Arrow css={next} onClick={() => onNextClickEventHandler()}/>;
 }
 
-export const PrevBtn:React.FC<ClickEventProps> = (props) => {
+export const PrevBtn:React.FC<ClickEventProps> = ({month, year, setMonth, setYear}) => {
     const onPrevClickEventHandler = () => {
-        if(props.month === 0) {
-            props.setYear(props.year - 1);
-            props.setMonth(11);
-        } else props.setMonth(props.month - 1);
+        if(month === 0) {
+            setYear(year - 1);
+            setMonth(11);
+        } else setMonth(month - 1);
     }
     return <Arrow css={prev} onClick={() => onPrevClickEventHandler()}/>;
 }

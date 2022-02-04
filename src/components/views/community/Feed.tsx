@@ -14,15 +14,16 @@ import { revealCmt, hideCmt } from "../../../types/store/actions/commentActions"
 import CommentList from "./Comments";
 
 
-const Feed:React.FC<Post> = ({feed}:Post) => {
+const Feed:React.FC<Post> = ({feed}) => {
     const [init, setInit] = useState<boolean>(false);
     const [likes, setLikes] = useState<number | undefined>(undefined);
     
+    const [showCmts, setShowCmts] = useState<boolean>(true);
     // comment visibility에 redux 적용하기
-    const showCmts = useSelector((state:RootState) => state.reducer.show);
-    const dispatch = useDispatch();
-    const revealComments = () => { dispatch(revealCmt()) };
-    const hideComments = () => { dispatch(hideCmt()) }; 
+    // const showCmts = useSelector((state:RootState) => state.reducer.show);
+    // const dispatch = useDispatch();
+    // const revealComments = () => { dispatch(revealCmt()) };
+    // const hideComments = () => { dispatch(hideCmt()) }; 
     
     const mutation = useMutation( async () => {
         axios.patch(`api/community/post/edit/${feed.id}/${likes}`);
@@ -55,7 +56,7 @@ const Feed:React.FC<Post> = ({feed}:Post) => {
                         <Content>{feed.content}</Content>
                     </div>
                     <Icons>
-                        <Comments cnt={feed.comments.length} showCmts={showCmts} revealCmts={revealComments} hideCmts={hideComments}/>
+                        <Comments cnt={feed.comments.length} showCmts={showCmts} setShowCmts={setShowCmts}/>
                         <Heart likes={likes === undefined ? 0 : likes} setLikes={setLikes}/>
                         <ShareButton />
                     </Icons>

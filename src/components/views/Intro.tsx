@@ -6,13 +6,12 @@ import tesla from '../../assets/tesla.gif';
 import Bulb from "./intro/Bulb";
 import AnimatedText from "./intro/JustDoIt";
 import { useNavigate } from 'react-router';
-import RightArrow from "./intro/Arrow";
 
-const Intro = () => {
+const Intro:React.FC = () => {
   const navigate = useNavigate();
     
     useEffect(() => {
-        // setTimeout(() => navigate('/main'), 7000);
+        setTimeout(() => navigate('/main'), 6500);
     },[]);
 
   return (
@@ -34,10 +33,12 @@ const Gif = styled.div`
   width: 50vw;
   height: 100vh;
   float: left;
+  z-index: 1;
 `;
 
 const Container = styled.div`
   display: flex;
+  z-index: 2;
 `;
 
 const Wrapper = styled.div`
