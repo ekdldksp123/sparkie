@@ -8,21 +8,23 @@ import { ReactComponent as Cmt } from '../../../assets/comment.svg';
 import { CommentProps } from "../../../types/components/views/community/CounterProps";
 import { revealCmt } from "../../../types/store/actions/commentActions";
 
-const Comments:React.FC<CommentProps> = ({ cnt, showCmts, revealCmts, hideCmts }: CommentProps) => {
+// const Comments:React.FC<CommentProps> = ({ cnt, showCmts, revealCmts, hideCmts }) => {
+const Comments:React.FC<CommentProps> = ({ cnt, showCmts, setShowCmts }) => {
     const [count, setCount] = useState<number>(0);
 
     useEffect(() => {
         setCount(cnt);
     },[cnt]);
 
-    const handleVisibiltiy = () => {
-        if(showCmts) hideCmts();
-        else revealCmts();
-    }
+    // const handleVisibiltiy = () => {
+    //     console.log(`handleVisibiltiy: ${showCmts}`);
+    //     if(showCmts) hideCmts();
+    //     else revealCmts();
+    // }
     
     return(
         <>  
-            <Cmt css={cmt} onClick={() => handleVisibiltiy() }/>
+            <Cmt css={cmt} onClick={() => setShowCmts(!showCmts) }/>
             <Counter>{count}</Counter>  
         </>
     )

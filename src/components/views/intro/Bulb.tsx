@@ -2,7 +2,7 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 
-const Bulb = () => {
+const Bulb:React.FC = () => {
     return (
         <Wrapper>
             <LightBulb xmlns="http://www.w3.org/2000/svg" viewBox="0 0 154.72 276.77">
@@ -47,8 +47,7 @@ const lightOn = keyframes`
 `;
 
 const Wrapper = styled.div`
-    margin: 0 auto;
-    #padding: 15px 50px 0px 50px;
+    padding: 0px 60px 20px 60px;
 `;
 
 const LightBulb = styled.svg`width: 125px;`;

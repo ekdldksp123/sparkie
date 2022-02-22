@@ -2,7 +2,7 @@
 import { css, keyframes } from "@emotion/react";
 import styled from '@emotion/styled';
 
-const AnimatedText = () => {
+const AnimatedText:React.FC = () => {
     
     return (
         <div>

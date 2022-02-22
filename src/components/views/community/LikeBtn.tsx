@@ -10,7 +10,7 @@ interface Likes {
     setLikes: (v:number) => void,
 }
 
-const Heart:React.FC<Likes> = ({likes, setLikes}: Likes) => {
+const Heart:React.FC<Likes> = ({likes, setLikes}) => {
     const [isClicked, setIsClicked] = useState<boolean>(false);
 
     useEffect(() => {
