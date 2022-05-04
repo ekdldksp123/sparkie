@@ -1,4 +1,4 @@
-# pick_me client
+# sparkie client
 ![image](https://user-images.githubusercontent.com/58977834/146023520-762d61ff-fb87-4715-8597-93f31110e05e.png)
 
 ### src > components
